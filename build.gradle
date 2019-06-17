@@ -26,3 +26,9 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext{
+    lifecycle_version = "2.0.0"
+    materialVersion = "1.0.0"
+    picassoVersion = "2.71828"
+}

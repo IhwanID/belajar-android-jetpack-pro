@@ -1,4 +1,6 @@
 package id.ihwan.jetpackpro
 
-class HomeViewModel {
+import androidx.lifecycle.ViewModel
+
+class HomeViewModel : ViewModel() {
 }

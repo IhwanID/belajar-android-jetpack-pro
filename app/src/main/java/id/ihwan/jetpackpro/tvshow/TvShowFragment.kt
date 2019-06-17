@@ -8,10 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 
 import id.ihwan.jetpackpro.R
+import id.ihwan.jetpackpro.movies.MoviesFragment
 
 
 class TvShowFragment : Fragment() {
 
+    companion object {
+        fun newInstance(): TvShowFragment {
+            return TvShowFragment()
+        }
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
