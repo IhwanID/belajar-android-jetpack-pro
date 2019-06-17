@@ -6,11 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import id.ihwan.jetpackpro.R
+import kotlinx.android.synthetic.main.list_item_tvshow.view.*
 
-class TvShowAdapter(private val context: Context,
-                    private val items: List<TvShow>,
-                    private val listener: (TvShow) -> Unit)
+class TvShowAdapter(private val context: Context?)
     : RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>() {
+
+
+    private var items: List<TvShow> = emptyList()
+
+    fun loadData(items: List<TvShow>){
+        this.items =items
+        notifyDataSetChanged()
+    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TvShowViewHolder {
@@ -20,13 +27,13 @@ class TvShowAdapter(private val context: Context,
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: TvShowViewHolder, position: Int) {
-        holder.bind(items[position], listener)
+        holder.bind(items[position])
     }
 
     class TvShowViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        fun bind(items: TvShow, listener: (TvShow) -> Unit){
-
+        fun bind(items: TvShow){
+            itemView.titleTvShow.text = items.title
         }
 
     }

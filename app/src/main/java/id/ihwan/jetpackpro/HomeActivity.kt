@@ -13,10 +13,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class HomeActivity : AppCompatActivity() {
 
-    private val viewModel by lazy {
-        ViewModelProviders.of(this).get(HomeViewModel::class.java)
-    }
-
     private lateinit  var viewPager: ViewPager
 
     override fun onCreate(savedInstanceState: Bundle?) {

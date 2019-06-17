@@ -6,13 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import id.ihwan.jetpackpro.R
+import kotlinx.android.synthetic.main.list_item_movies.view.*
 
 class MoviesAdapter(
-        private val context: Context,
-        private val items: List<Movies>,
-        private val listener: (Movies) -> Unit
+        private val context: Context?
 ) : RecyclerView.Adapter<MoviesAdapter.MoviesViedHolder>() {
 
+    private var items: List<Movies> = emptyList()
+
+    fun loadData(items: List<Movies>){
+        this.items =items
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViedHolder {
         return MoviesViedHolder(LayoutInflater.from(context).inflate(R.layout.list_item_movies, parent, false))
@@ -21,13 +26,15 @@ class MoviesAdapter(
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: MoviesViedHolder, position: Int) {
-        holder.bind(items[position], listener)
+        holder.bind(items[position])
     }
 
 
     class MoviesViedHolder(view : View) : RecyclerView.ViewHolder(view) {
 
-        fun bind(items: Movies, listener: (Movies) -> Unit){
+        fun bind(items: Movies){
+
+            itemView.titleMovies.text = items.title
 
         }
 
