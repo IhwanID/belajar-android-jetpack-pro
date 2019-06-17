@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import id.ihwan.jetpackpro.HomeViewModel
 import id.ihwan.jetpackpro.R
 import kotlinx.android.synthetic.main.fragment_tv_show.*
@@ -41,7 +41,7 @@ class TvShowFragment : Fragment() {
         data = viewModel.tvShow
 
         tvShowRecyclerView.apply {
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = GridLayoutManager(context,2)
             adapter = this@TvShowFragment.adapter
             setHasFixedSize(true)
         }

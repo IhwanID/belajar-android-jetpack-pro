@@ -5,8 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import id.ihwan.jetpackpro.R
 import kotlinx.android.synthetic.main.list_item_movies.view.*
+import android.content.Intent
+import id.ihwan.jetpackpro.DetailMoviesActivity
+
 
 class MoviesAdapter(
         private val context: Context?
@@ -27,13 +31,20 @@ class MoviesAdapter(
 
     override fun onBindViewHolder(holder: MoviesViedHolder, position: Int) {
         holder.bind(items[position])
+        holder.itemView.detailButton.setOnClickListener {
+            val intent = Intent(context, DetailMoviesActivity::class.java)
+            intent.putExtra("detail", items[position].id)
+            context?.startActivity(intent)
+        }
     }
 
 
     class MoviesViedHolder(view : View) : RecyclerView.ViewHolder(view) {
 
         fun bind(items: Movies){
-
+            items.image.let {
+                Picasso.get().load(it).into(itemView.imageMovies)
+            }
             itemView.titleMovies.text = items.title
 
         }

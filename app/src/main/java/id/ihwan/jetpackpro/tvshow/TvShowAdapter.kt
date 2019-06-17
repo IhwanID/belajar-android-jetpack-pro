@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import id.ihwan.jetpackpro.R
 import kotlinx.android.synthetic.main.list_item_tvshow.view.*
 
@@ -33,6 +34,9 @@ class TvShowAdapter(private val context: Context?)
     class TvShowViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         fun bind(items: TvShow){
+            items.image.let {
+                Picasso.get().load(it).into(itemView.imageTvShow)
+            }
             itemView.titleTvShow.text = items.title
         }
 
