@@ -9,7 +9,6 @@ import com.squareup.picasso.Picasso
 import id.ihwan.jetpackpro.R
 import kotlinx.android.synthetic.main.list_item_movies.view.*
 import android.content.Intent
-import id.ihwan.jetpackpro.DetailMoviesActivity
 
 
 class MoviesAdapter(

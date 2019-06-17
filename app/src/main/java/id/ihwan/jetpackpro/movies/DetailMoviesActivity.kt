@@ -1,10 +1,10 @@
-package id.ihwan.jetpackpro
+package id.ihwan.jetpackpro.movies
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProviders
 import com.squareup.picasso.Picasso
-import id.ihwan.jetpackpro.movies.Movies
+import id.ihwan.jetpackpro.R
 import kotlinx.android.synthetic.main.activity_detail_movie.*
 
 class DetailMoviesActivity : AppCompatActivity() {

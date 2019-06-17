@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager.widget.ViewPager
 import id.ihwan.jetpackpro.movies.MoviesFragment
 import id.ihwan.jetpackpro.tvshow.TvShowFragment

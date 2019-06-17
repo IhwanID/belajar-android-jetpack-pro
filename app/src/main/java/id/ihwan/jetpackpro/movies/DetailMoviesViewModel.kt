@@ -1,7 +1,6 @@
-package id.ihwan.jetpackpro
+package id.ihwan.jetpackpro.movies
 
 import androidx.lifecycle.ViewModel
-import id.ihwan.jetpackpro.movies.Movies
 import id.ihwan.jetpackpro.utils.DataDummy
 
 class DetailMoviesViewModel: ViewModel(){
