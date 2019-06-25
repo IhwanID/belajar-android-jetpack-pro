@@ -1,4 +1,4 @@
-package id.ihwan.jetpackpro.testing
+package id.ihwan.jetpackpro
 
 import android.view.Gravity
 import android.widget.FrameLayout
