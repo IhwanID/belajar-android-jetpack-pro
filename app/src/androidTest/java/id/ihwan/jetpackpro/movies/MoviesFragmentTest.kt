@@ -8,6 +8,7 @@ import androidx.test.rule.ActivityTestRule
 import id.ihwan.jetpackpro.R
 import id.ihwan.jetpackpro.RecyclerViewItemCountAssertion
 import id.ihwan.jetpackpro.SingleFragmentActivity
+import id.ihwan.jetpackpro.movies.view.MoviesFragment
 import org.junit.After
 import org.junit.Before
 import org.junit.Test

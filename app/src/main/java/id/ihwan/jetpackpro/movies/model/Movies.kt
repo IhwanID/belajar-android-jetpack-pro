@@ -1,4 +1,4 @@
-package id.ihwan.jetpackpro.movies
+package id.ihwan.jetpackpro.movies.model
 
 import id.ihwan.jetpackpro.R
 

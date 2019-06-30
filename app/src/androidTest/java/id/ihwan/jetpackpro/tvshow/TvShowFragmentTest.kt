@@ -11,6 +11,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.rule.ActivityTestRule
 
 import id.ihwan.jetpackpro.SingleFragmentActivity
+import id.ihwan.jetpackpro.tvshow.view.TvShowFragment
 import org.junit.Rule
 
 

@@ -1,6 +1,8 @@
 package id.ihwan.jetpackpro.tvshow
 
 import id.ihwan.jetpackpro.R
+import id.ihwan.jetpackpro.tvshow.model.TvShow
+import id.ihwan.jetpackpro.tvshow.viewmodel.DetailTvShowViewModel
 import org.junit.After
 import org.junit.Assert
 import org.junit.Before
@@ -14,7 +16,14 @@ class DetailTvShowViewModelTest {
     @Before
     fun setUp() {
         viewModel = DetailTvShowViewModel()
-        dataDummy = TvShow(1,"Arrow", "Spoiled billionaire playboy Oliver Queen is missing and presumed dead when his yacht is lost at sea. He returns five years later a changed man, determined to clean up the city as a hooded vigilante armed with a bow.", R.drawable.poster_arrow, "2012", "58")
+        dataDummy = TvShow(
+            1,
+            "Arrow",
+            "Spoiled billionaire playboy Oliver Queen is missing and presumed dead when his yacht is lost at sea. He returns five years later a changed man, determined to clean up the city as a hooded vigilante armed with a bow.",
+            R.drawable.poster_arrow,
+            "2012",
+            "58"
+        )
     }
 
     @After

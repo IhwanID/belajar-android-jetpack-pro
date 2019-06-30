@@ -1,6 +1,8 @@
 package id.ihwan.jetpackpro.movies
 
 import id.ihwan.jetpackpro.R
+import id.ihwan.jetpackpro.movies.model.Movies
+import id.ihwan.jetpackpro.movies.viewmodel.DetailMoviesViewModel
 import org.junit.After
 import org.junit.Assert
 import org.junit.Before
@@ -15,7 +17,15 @@ class DetailMoviesViewModelTest {
     @Before
     fun setUp() {
         viewModel = DetailMoviesViewModel()
-        dataDummy = Movies(1,"Alita : Battle Angel","Robert Rodriguez", "When Alita awakens with no memory of who she is in a future world she does not recognize, she is taken in by Ido, a compassionate doctor who realizes that somewhere in this abandoned cyborg shell is the heart and soul of a young woman with an extraordinary past.", R.drawable.poster_alita, "2019", "67")
+        dataDummy = Movies(
+            1,
+            "Alita : Battle Angel",
+            "Robert Rodriguez",
+            "When Alita awakens with no memory of who she is in a future world she does not recognize, she is taken in by Ido, a compassionate doctor who realizes that somewhere in this abandoned cyborg shell is the heart and soul of a young woman with an extraordinary past.",
+            R.drawable.poster_alita,
+            "2019",
+            "67"
+        )
     }
 
     @After

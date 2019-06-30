@@ -1,4 +1,4 @@
-package id.ihwan.jetpackpro.tvshow
+package id.ihwan.jetpackpro.tvshow.view
 
 
 import android.os.Bundle
@@ -8,17 +8,25 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
-import id.ihwan.jetpackpro.HomeViewModel
 import id.ihwan.jetpackpro.R
+import id.ihwan.jetpackpro.home.HomeViewModel
+import id.ihwan.jetpackpro.tvshow.model.TvShow
+import id.ihwan.jetpackpro.tvshow.adapter.TvShowAdapter
 import kotlinx.android.synthetic.main.fragment_tv_show.*
 
 
 class TvShowFragment : Fragment() {
 
 
-    private val viewModel by lazy { ViewModelProviders.of(this).get(HomeViewModel::class.java) }
+    private val viewModel by lazy {
+        ViewModelProviders.of(this).get(HomeViewModel::class.java)
+    }
 
-    private val adapter: TvShowAdapter by lazy { TvShowAdapter(context) }
+    private val adapter: TvShowAdapter by lazy {
+        id.ihwan.jetpackpro.tvshow.TvShowAdapter(
+            context
+        )
+    }
 
     lateinit var data: List<TvShow>
 
@@ -41,7 +49,7 @@ class TvShowFragment : Fragment() {
         data = viewModel.tvShow
 
         tvShowRecyclerView.apply {
-            layoutManager = GridLayoutManager(context,2)
+            layoutManager = GridLayoutManager(context, 2)
             adapter = this@TvShowFragment.adapter
             setHasFixedSize(true)
         }

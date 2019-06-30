@@ -1,10 +1,12 @@
-package id.ihwan.jetpackpro.tvshow
+package id.ihwan.jetpackpro.tvshow.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import com.squareup.picasso.Picasso
 import id.ihwan.jetpackpro.R
+import id.ihwan.jetpackpro.tvshow.viewmodel.DetailTvShowViewModel
+import id.ihwan.jetpackpro.tvshow.model.TvShow
 import kotlinx.android.synthetic.main.activity_detail_tv_show.*
 
 class DetailTvShowActivity : AppCompatActivity() {
@@ -19,7 +21,7 @@ class DetailTvShowActivity : AppCompatActivity() {
         initView(viewModel.detailTvShow(id))
     }
 
-    fun initView(tvShow: TvShow?){
+    fun initView(tvShow: TvShow?) {
         tvShow?.image.let {
             Picasso.get().load(it as Int).into(imageDetail)
         }

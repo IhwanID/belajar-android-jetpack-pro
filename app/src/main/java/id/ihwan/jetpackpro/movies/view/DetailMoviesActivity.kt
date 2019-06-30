@@ -1,15 +1,19 @@
-package id.ihwan.jetpackpro.movies
+package id.ihwan.jetpackpro.movies.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProviders
 import com.squareup.picasso.Picasso
 import id.ihwan.jetpackpro.R
+import id.ihwan.jetpackpro.movies.viewmodel.DetailMoviesViewModel
+import id.ihwan.jetpackpro.movies.model.Movies
 import kotlinx.android.synthetic.main.activity_detail_movie.*
 
 class DetailMoviesActivity : AppCompatActivity() {
 
-    private val viewModel by lazy { ViewModelProviders.of(this).get(DetailMoviesViewModel::class.java) }
+    private val viewModel by lazy {
+        ViewModelProviders.of(this).get(DetailMoviesViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
