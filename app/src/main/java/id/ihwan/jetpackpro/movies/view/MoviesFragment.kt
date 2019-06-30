@@ -30,7 +30,7 @@ class MoviesFragment : Fragment() {
     }
 
     private val adapter: MoviesAdapter by lazy {
-        id.ihwan.jetpackpro.movies.MoviesAdapter(
+        MoviesAdapter(
             context
         )
     }

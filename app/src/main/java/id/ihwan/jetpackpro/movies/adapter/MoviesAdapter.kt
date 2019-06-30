@@ -12,7 +12,6 @@ import id.ihwan.jetpackpro.movies.model.Movies
 import id.ihwan.jetpackpro.movies.view.DetailMoviesActivity
 import kotlinx.android.synthetic.main.list_item_movies.view.*
 
-
 class MoviesAdapter(private val context: Context?) : RecyclerView.Adapter<MoviesAdapter.MoviesViedHolder>() {
 
     private var items: List<Movies> = emptyList()

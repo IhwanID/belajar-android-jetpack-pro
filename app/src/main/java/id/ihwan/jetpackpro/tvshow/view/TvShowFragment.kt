@@ -23,7 +23,7 @@ class TvShowFragment : Fragment() {
     }
 
     private val adapter: TvShowAdapter by lazy {
-        id.ihwan.jetpackpro.tvshow.TvShowAdapter(
+        TvShowAdapter(
             context
         )
     }
