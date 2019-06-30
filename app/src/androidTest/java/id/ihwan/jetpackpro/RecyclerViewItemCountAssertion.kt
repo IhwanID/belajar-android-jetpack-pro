@@ -1,4 +1,4 @@
-package id.ihwan.jetpackpro.utils
+package id.ihwan.jetpackpro
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
