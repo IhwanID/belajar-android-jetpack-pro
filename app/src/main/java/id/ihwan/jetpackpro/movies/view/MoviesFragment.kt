@@ -44,6 +44,7 @@ class MoviesFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         data = viewModel.movies
+        viewModel.getMovies()
 
         moviesRecyclerView.apply {
             layoutManager = GridLayoutManager(context, 2)

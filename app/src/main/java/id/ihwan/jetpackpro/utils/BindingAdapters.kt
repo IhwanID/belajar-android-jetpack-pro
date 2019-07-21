@@ -16,5 +16,5 @@ class BindingAdapters {
                 .into(imgView)
         }
     }
-    
+
 }

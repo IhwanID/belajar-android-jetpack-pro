@@ -3,7 +3,8 @@ package id.ihwan.jetpackpro.network
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import id.ihwan.jetpackpro.movies.model.Movies
+import id.ihwan.jetpackpro.network.response.ResponseMovie
+import id.ihwan.jetpackpro.network.response.ResponseTvShow
 import kotlinx.coroutines.Deferred
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -25,7 +26,10 @@ private val retrofit = Retrofit.Builder()
 interface TMDBApiService {
 
     @GET("movie/popular")
-    fun getPopularMoviews(@Query("api_key") apiKey: String): Deferred<List<Movies>>
+    fun getPopularMoviews(@Query("api_key") apiKey: String? = "78adf61cd991fec888c055105c148a44"): Deferred<ResponseMovie>
+
+    @GET("tv/popular")
+    fun getPopularTvShow(@Query("api_key") apiKey: String? = "78adf61cd991fec888c055105c148a44"): Deferred<ResponseTvShow>
 
 
 }
