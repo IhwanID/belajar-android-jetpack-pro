@@ -11,9 +11,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import id.ihwan.jetpackpro.R
 import id.ihwan.jetpackpro.home.HomeViewModel
 import id.ihwan.jetpackpro.movies.model.Movies
+import id.ihwan.jetpackpro.databinding.FragmentMoviesBinding
 import id.ihwan.jetpackpro.movies.adapter.MoviesAdapter
 import kotlinx.android.synthetic.main.fragment_movies.*
-
 
 class MoviesFragment : Fragment() {
 
@@ -23,35 +23,18 @@ class MoviesFragment : Fragment() {
         }
     }
 
-    lateinit var data: List<Movies>
-
     private val viewModel by lazy {
         ViewModelProviders.of(this).get(HomeViewModel::class.java)
     }
 
-    private val adapter: MoviesAdapter by lazy {
-        MoviesAdapter(
-            context
-        )
-    }
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_movies, container, false)
+        val binding = FragmentMoviesBinding.inflate(inflater)
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
+        return binding.root
+
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        data = viewModel.movies
-        viewModel.getMovies()
-
-        moviesRecyclerView.apply {
-            layoutManager = GridLayoutManager(context, 2)
-            adapter = this@MoviesFragment.adapter
-            setHasFixedSize(true)
-        }
-
-        adapter.loadData(data)
-    }
 }

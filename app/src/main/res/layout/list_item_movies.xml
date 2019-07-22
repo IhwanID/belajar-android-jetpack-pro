@@ -1,42 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
-    android:layout_margin="8dp"
-    card_view:cardElevation="8dp"
-    card_view:cardCornerRadius="12dp"
-    card_view:contentPadding="12dp"
-    card_view:cardBackgroundColor="#FFFFFF">
+<layout
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/imageMovies"
-            android:layout_marginRight="16dp"
-            android:layout_marginLeft="16dp"
+    <data>
+        <variable
+                name="model"
+                type="id.ihwan.jetpackpro.network.response.ResultsMovie"/>
+    </data>
+    <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-            tools:src="@drawable/poster_aquaman" />
-
-        <TextView
-            android:id="@+id/titleMovies"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            tools:text="AQUAMAN" />
-        <Button
-            android:id="@+id/detailButton"
-            android:text="See Detail"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+            android:orientation="horizontal"
+            android:layout_margin="8dp"
+            card_view:cardElevation="8dp"
+            card_view:cardCornerRadius="12dp"
+            card_view:contentPadding="12dp"
+            card_view:cardBackgroundColor="#FFFFFF">
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <ImageView
+                    android:id="@+id/imageMovies"
+                    app:imageUrl="@{model.backdrop_path}"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    tools:src="@drawable/poster_aquaman"/>
+
+            <TextView
+                    android:id="@+id/titleMovies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    tools:text="AQUAMAN"/>
+            <Button
+                    android:id="@+id/detailButton"
+                    android:text="See Detail"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+        </LinearLayout>
 
 
-</androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+</layout>
