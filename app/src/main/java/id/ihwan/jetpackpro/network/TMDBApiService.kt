@@ -26,7 +26,7 @@ private val retrofit = Retrofit.Builder()
 interface TMDBApiService {
 
     @GET("movie/popular")
-    fun getPopularMoviews(@Query("api_key") apiKey: String? = "78adf61cd991fec888c055105c148a44"): Deferred<ResponseMovie>
+    fun getPopularMovies(@Query("api_key") apiKey: String? = "78adf61cd991fec888c055105c148a44"): Deferred<ResponseMovie>
 
     @GET("tv/popular")
     fun getPopularTvShow(@Query("api_key") apiKey: String? = "78adf61cd991fec888c055105c148a44"): Deferred<ResponseTvShow>

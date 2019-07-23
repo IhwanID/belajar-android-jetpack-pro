@@ -7,7 +7,7 @@ import id.ihwan.jetpackpro.databinding.ListItemMoviesBinding
 import id.ihwan.jetpackpro.network.response.ResultsMovie
 
 
-class MoviesAdapter(val onClick: (ResultsMovie) -> Unit) : RecyclerView.Adapter<MoviesAdapter.MoviesViedHolder>() {
+class MoviesAdapter(val onClick: (ResultsMovie) -> Unit) : RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder>() {
 
     private var items: List<ResultsMovie> = emptyList()
 
@@ -16,20 +16,20 @@ class MoviesAdapter(val onClick: (ResultsMovie) -> Unit) : RecyclerView.Adapter<
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViedHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ListItemMoviesBinding.inflate(inflater, parent, false)
-        return MoviesViedHolder(binding)
+        return MoviesViewHolder(binding)
     }
 
     override fun getItemCount(): Int = items.size
 
-    override fun onBindViewHolder(holder: MoviesViedHolder, position: Int) {
+    override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
         holder.bind(items[position])
     }
 
 
-    class MoviesViedHolder(private val binding: ListItemMoviesBinding) : RecyclerView.ViewHolder(binding.root) {
+    class MoviesViewHolder(private val binding: ListItemMoviesBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(items: ResultsMovie) {
             binding.apply {
