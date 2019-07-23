@@ -1,18 +1,13 @@
 package id.ihwan.jetpackpro.movies.adapter
 
-import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
-import id.ihwan.jetpackpro.R
-import id.ihwan.jetpackpro.movies.view.DetailMoviesActivity
+import id.ihwan.jetpackpro.databinding.ListItemMoviesBinding
 import id.ihwan.jetpackpro.network.response.ResultsMovie
-import kotlinx.android.synthetic.main.list_item_movies.view.*
 
-class MoviesAdapter(private val context: Context?) : RecyclerView.Adapter<MoviesAdapter.MoviesViedHolder>() {
+
+class MoviesAdapter(val onClick: (ResultsMovie) -> Unit) : RecyclerView.Adapter<MoviesAdapter.MoviesViedHolder>() {
 
     private var items: List<ResultsMovie> = emptyList()
 
@@ -22,34 +17,25 @@ class MoviesAdapter(private val context: Context?) : RecyclerView.Adapter<Movies
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViedHolder {
-        return MoviesViedHolder(
-            LayoutInflater.from(context).inflate(
-                R.layout.list_item_movies,
-                parent,
-                false
-            )
-        )
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = ListItemMoviesBinding.inflate(inflater, parent, false)
+        return MoviesViedHolder(binding)
     }
 
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: MoviesViedHolder, position: Int) {
         holder.bind(items[position])
-//        holder.itemView.detailButton.setOnClickListener {
-//            val intent = Intent(context, DetailMoviesActivity::class.java)
-//            intent.putExtra("detail", items[position].id)
-//            context?.startActivity(intent)
-//        }
     }
 
 
-    class MoviesViedHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class MoviesViedHolder(private val binding: ListItemMoviesBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(items: ResultsMovie) {
-            items.backdrop_path.let {
-                Picasso.get().load(it).into(itemView.imageMovies)
+            binding.apply {
+                model= items
+                executePendingBindings()
             }
-            itemView.titleMovies.text = items.title
         }
 
     }
