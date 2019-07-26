@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import id.ihwan.jetpackpro.R
 import id.ihwan.jetpackpro.databinding.FragmentTvShowBinding
 import id.ihwan.jetpackpro.home.HomeViewModel
-import id.ihwan.jetpackpro.tvshow.model.TvShow
 import id.ihwan.jetpackpro.tvshow.adapter.TvShowAdapter
 
 class TvShowFragment : Fragment() {
@@ -28,7 +27,6 @@ class TvShowFragment : Fragment() {
         TvShowAdapter{Log.d("", it.overview)}
     }
 
-    lateinit var data: List<TvShow>
     lateinit var binding: FragmentTvShowBinding
 
     companion object {
@@ -41,7 +39,7 @@ class TvShowFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_movies, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tv_show, container, false)
         binding.lifecycleOwner = this@TvShowFragment
 
         binding.tvShowRecyclerView.apply {
@@ -50,7 +48,6 @@ class TvShowFragment : Fragment() {
             setHasFixedSize(true)
         }
 
-        viewModel.getMovies()
         viewModel.tvShow.observe(this, Observer {
             tvShowAdapter.loadData(it)
         })

@@ -40,11 +40,11 @@ class MoviesFragment : Fragment() {
 
         binding.moviesRecyclerView.apply {
             adapter = moviesAdapter
-            layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+            layoutManager = LinearLayoutManager(activity)
             setHasFixedSize(true)
         }
 
-        viewModel.getMovies()
+        //viewModel.getMovies()
         viewModel.movies.observe(this, Observer {
             moviesAdapter.loadData(it)
         })

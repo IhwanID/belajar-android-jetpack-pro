@@ -3,11 +3,8 @@ package id.ihwan.jetpackpro.movies.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProviders
-import com.squareup.picasso.Picasso
 import id.ihwan.jetpackpro.R
 import id.ihwan.jetpackpro.movies.viewmodel.DetailMoviesViewModel
-import id.ihwan.jetpackpro.movies.model.Movies
-import kotlinx.android.synthetic.main.activity_detail_movie.*
 
 class DetailMoviesActivity : AppCompatActivity() {
 
@@ -20,16 +17,8 @@ class DetailMoviesActivity : AppCompatActivity() {
         setContentView(R.layout.activity_detail_movie)
 
         val id = intent.getIntExtra("detail", 0)
-        initView(viewModel.detailMovies(id))
+        //initView(viewModel.detailMovies(id))
 
     }
 
-    fun initView(movie: Movies?){
-        movie?.image.let {
-            Picasso.get().load(it as Int).into(imageDetail)
-        }
-
-        titleDetail.text = movie?.title
-        descriptionDetail.text = movie?.description
-    }
 }

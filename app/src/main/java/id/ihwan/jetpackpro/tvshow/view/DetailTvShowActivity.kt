@@ -3,11 +3,8 @@ package id.ihwan.jetpackpro.tvshow.view
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
-import com.squareup.picasso.Picasso
 import id.ihwan.jetpackpro.R
 import id.ihwan.jetpackpro.tvshow.viewmodel.DetailTvShowViewModel
-import id.ihwan.jetpackpro.tvshow.model.TvShow
-import kotlinx.android.synthetic.main.activity_detail_tv_show.*
 
 class DetailTvShowActivity : AppCompatActivity() {
 
@@ -18,15 +15,8 @@ class DetailTvShowActivity : AppCompatActivity() {
         setContentView(R.layout.activity_detail_tv_show)
 
         val id = intent.getIntExtra("detail", 0)
-        initView(viewModel.detailTvShow(id))
+        //initView(viewModel.detailTvShow(id))
     }
 
-    fun initView(tvShow: TvShow?) {
-        tvShow?.image.let {
-            Picasso.get().load(it as Int).into(imageDetail)
-        }
 
-        titleDetail.text = tvShow?.title
-        descriptionDetail.text = tvShow?.description
-    }
 }

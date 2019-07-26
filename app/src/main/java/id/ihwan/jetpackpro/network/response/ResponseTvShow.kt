@@ -6,7 +6,6 @@ data class ResponseTvShow(
 
 data class ResultsTvShow(
     val name: String? = "",
-    val vote_average: Int? = 0,
     val popularity: String? = "",
     val poster_path: String? = "",
     val backdrop_path: String? = "",
