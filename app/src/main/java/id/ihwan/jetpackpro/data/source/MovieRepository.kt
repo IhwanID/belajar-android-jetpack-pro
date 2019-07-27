@@ -16,6 +16,13 @@ class MovieRepository {
     fun getTvShow(): LiveData<List<ResultsTvShow>>{
         return remote.getTvShowFromApi()
     }
-    
+
+    fun getMovieDetail(){
+
+    }
+
+    fun getTvShowDetail(){
+
+    }
 
 }

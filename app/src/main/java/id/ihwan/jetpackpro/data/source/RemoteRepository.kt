@@ -1,6 +1,5 @@
 package id.ihwan.jetpackpro.data.source
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import id.ihwan.jetpackpro.network.TMDBApi
@@ -27,11 +26,8 @@ class RemoteRepository {
             try {
                 val listResult = getMoviesDeferred.await()
                 data.postValue(listResult.results)
-                Log.d("listResult", listResult.toString())
             } catch (e: Exception) {
                 data.value = ArrayList()
-                Log.d("listResult", "failed $e")
-
             }
         }
 
@@ -48,10 +44,8 @@ class RemoteRepository {
 
                 val listResult = getTvShowDeferred.await()
                 data.postValue(listResult.results)
-                Log.d("listResult", listResult.toString())
             } catch (e: Exception) {
                 data.value = ArrayList()
-                Log.d("listResult", "gagal $e")
             }
         }
         return data

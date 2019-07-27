@@ -8,14 +8,16 @@ import id.ihwan.jetpackpro.tvshow.viewmodel.DetailTvShowViewModel
 
 class DetailTvShowActivity : AppCompatActivity() {
 
-    private val viewModel by lazy { ViewModelProviders.of(this).get(DetailTvShowViewModel::class.java) }
+    private val viewModel by lazy {
+        ViewModelProviders.of(this).get(DetailTvShowViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_tv_show)
 
-        val id = intent.getIntExtra("detail", 0)
-        //initView(viewModel.detailTvShow(id))
+        val id = intent.getIntExtra("id", 0)
+
     }
 
 

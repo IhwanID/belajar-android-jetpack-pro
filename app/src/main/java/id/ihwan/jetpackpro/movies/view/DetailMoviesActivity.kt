@@ -17,7 +17,6 @@ class DetailMoviesActivity : AppCompatActivity() {
         setContentView(R.layout.activity_detail_movie)
 
         val id = intent.getIntExtra("detail", 0)
-        //initView(viewModel.detailMovies(id))
 
     }
 
