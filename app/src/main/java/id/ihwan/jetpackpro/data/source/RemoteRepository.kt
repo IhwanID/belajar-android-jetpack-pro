@@ -3,6 +3,7 @@ package id.ihwan.jetpackpro.data.source
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import id.ihwan.jetpackpro.network.TMDBApi
+import id.ihwan.jetpackpro.network.response.ResponseDetailMovie
 import id.ihwan.jetpackpro.network.response.ResultsMovie
 import id.ihwan.jetpackpro.network.response.ResultsTvShow
 import kotlinx.coroutines.CoroutineScope
@@ -48,6 +49,24 @@ class RemoteRepository {
                 data.value = ArrayList()
             }
         }
+        return data
+    }
+
+    fun getDetailMovieFromApi(id: Int): LiveData<ResponseDetailMovie> {
+
+        val data = MutableLiveData<ResponseDetailMovie>()
+
+        coroutineScope.launch {
+
+            val getMoviesDeferred = TMDBApi.retrofitService.getDetailMovie(id)
+            try {
+                val listResult = getMoviesDeferred.await()
+                data.postValue(listResult)
+            } catch (e: Exception) {
+
+            }
+        }
+
         return data
     }
 

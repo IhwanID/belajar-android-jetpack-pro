@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProviders
 import id.ihwan.jetpackpro.R
-import id.ihwan.jetpackpro.movies.viewmodel.DetailMoviesViewModel
 
 class DetailMoviesActivity : AppCompatActivity() {
 

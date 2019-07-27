@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import id.ihwan.jetpackpro.R
-import id.ihwan.jetpackpro.tvshow.viewmodel.DetailTvShowViewModel
 
 class DetailTvShowActivity : AppCompatActivity() {
 
