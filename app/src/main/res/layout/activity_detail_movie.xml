@@ -4,7 +4,7 @@
     <data>
         <variable
                 name="model"
-                type="id.ihwan.jetpackpro.network.response.ResultsMovie"/>
+                type="id.ihwan.jetpackpro.network.response.ResponseDetailMovie"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -47,7 +47,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/titleDetail"
-                android:text="@{model.overview}"
+                android:text="@{model.title}"
                 tools:text="Lorem Ipsum "/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

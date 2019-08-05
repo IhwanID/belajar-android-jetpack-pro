@@ -56,7 +56,7 @@ class MoviesFragment : Fragment() {
 
     private fun goToDetailMovies(movies: ResultsMovie){
         val i = Intent(activity, DetailMoviesActivity::class.java)
-        i.putExtra("data", movies)
+        i.putExtra("id", movies.id)
         startActivity(i)
     }
 

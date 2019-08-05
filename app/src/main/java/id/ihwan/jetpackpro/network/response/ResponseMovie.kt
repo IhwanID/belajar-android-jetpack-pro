@@ -10,6 +10,7 @@ data class ResponseMovie(
 
 @Parcelize
 data class ResultsMovie(
+    val id: Int? = 0 ,
     val title: String? = "",
     val popularity: String? = "",
     val poster_path: String? = "",

@@ -23,8 +23,6 @@ class HomeViewModel : ViewModel() {
         }
     }
 
-
-
     val repository = MovieRepository()
 
     private val _movie :  LiveData<List<ResultsMovie>> = repository.movies
