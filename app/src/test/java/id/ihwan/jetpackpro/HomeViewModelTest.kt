@@ -1,25 +1,43 @@
 package id.ihwan.jetpackpro
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import id.ihwan.jetpackpro.data.source.MovieRepository
 import id.ihwan.jetpackpro.home.HomeViewModel
-import org.junit.After
-import org.junit.Before
-import org.junit.Test
+import kotlinx.coroutines.*
+import kotlinx.coroutines.test.setMain
+import org.junit.*
+import org.junit.runner.RunWith
+import org.mockito.junit.MockitoJUnitRunner
+import java.io.IOException
 
-
+@ObsoleteCoroutinesApi
+@ExperimentalCoroutinesApi
+@RunWith(MockitoJUnitRunner::class)
 class HomeViewModelTest{
-    private var viewModel: HomeViewModel? = null
+
+    @get:Rule
+    val rule = InstantTaskExecutorRule()
+
+    private val mainThreadSurrogate = newSingleThreadContext("UI thread")
+    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var repository: MovieRepository
 
     @Before
     fun setUp() {
-        viewModel = HomeViewModel()
+        Dispatchers.setMain(mainThreadSurrogate)
+        homeViewModel = HomeViewModel()
+        repository = MovieRepository()
     }
 
     @After
+    @Throws(IOException::class)
     fun tearDown() {
     }
 
     @Test
-    fun movies() {
-
+    @Throws(Exception::class)
+    fun movies() = runBlocking {
+        val movies = repository.movies
+        Assert.assertNotNull(movies)
     }
 }

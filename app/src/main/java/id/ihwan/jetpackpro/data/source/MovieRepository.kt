@@ -24,9 +24,11 @@ class MovieRepository {
     }
 
     suspend fun getTvShow(){
+        EspressoIdlingResource.increment()
         withContext(Dispatchers.IO) {
             val data = TMDBApi.retrofitService.getPopularTvShow().await()
             tvShows.postValue(data.results)
+            EspressoIdlingResource.decrement()
         }
 
     }
