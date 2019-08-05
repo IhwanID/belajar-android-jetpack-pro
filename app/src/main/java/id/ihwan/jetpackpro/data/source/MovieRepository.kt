@@ -1,29 +1,35 @@
 package id.ihwan.jetpackpro.data.source
 
-import androidx.lifecycle.LiveData
-import id.ihwan.jetpackpro.network.response.ResponseDetailMovie
+import androidx.lifecycle.MutableLiveData
+import id.ihwan.jetpackpro.utils.EspressoIdlingResource
+import id.ihwan.jetpackpro.network.TMDBApi
 import id.ihwan.jetpackpro.network.response.ResultsMovie
 import id.ihwan.jetpackpro.network.response.ResultsTvShow
-
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class MovieRepository {
 
-    val remote = RemoteRepository()
+    val movies = MutableLiveData<List<ResultsMovie>>()
+    val tvShows = MutableLiveData<List<ResultsTvShow>>()
 
-    fun getMovie(): LiveData<List<ResultsMovie>>{
-        return remote.getMovieFromApi()
-    }
-
-    fun getTvShow(): LiveData<List<ResultsTvShow>>{
-        return remote.getTvShowFromApi()
-    }
-
-    fun getMovieDetail(id: Int): LiveData<ResponseDetailMovie>{
-        return remote.getDetailMovieFromApi(id)
-    }
-
-    fun getTvShowDetail(){
+    suspend fun getMovie(){
+        EspressoIdlingResource.increment()
+        withContext(Dispatchers.IO) {
+            val data = TMDBApi.retrofitService.getPopularMovies().await()
+            movies.postValue(data.results)
+            EspressoIdlingResource.decrement()
+        }
 
     }
+
+    suspend fun getTvShow(){
+        withContext(Dispatchers.IO) {
+            val data = TMDBApi.retrofitService.getPopularTvShow().await()
+            tvShows.postValue(data.results)
+        }
+
+    }
+
 
 }

@@ -2,21 +2,19 @@ package id.ihwan.jetpackpro.movies.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProviders
+import androidx.databinding.DataBindingUtil
 import id.ihwan.jetpackpro.R
+import id.ihwan.jetpackpro.databinding.ActivityDetailMovieBinding
 
 class DetailMoviesActivity : AppCompatActivity() {
 
-    private val viewModel by lazy {
-        ViewModelProviders.of(this).get(DetailMoviesViewModel::class.java)
-    }
+    lateinit var binding: ActivityDetailMovieBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail_movie)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_detail_movie)
 
-        val id = intent.getIntExtra("detail", 0)
-
+        binding.model = intent.getParcelableExtra("data")
     }
 
 }

@@ -1,6 +1,7 @@
 package id.ihwan.jetpackpro.movies.view
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -15,6 +16,7 @@ import id.ihwan.jetpackpro.home.HomeViewModel
 import id.ihwan.jetpackpro.databinding.FragmentMoviesBinding
 import id.ihwan.jetpackpro.movies.adapter.MoviesAdapter
 import id.ihwan.jetpackpro.R
+import id.ihwan.jetpackpro.network.response.ResultsMovie
 
 class MoviesFragment : Fragment() {
 
@@ -29,7 +31,7 @@ class MoviesFragment : Fragment() {
     }
 
     private val moviesAdapter: MoviesAdapter by lazy {
-        MoviesAdapter{ Log.d("", it.overview) }
+        MoviesAdapter{ goToDetailMovies(it) }
     }
 
     lateinit var binding: FragmentMoviesBinding
@@ -44,13 +46,18 @@ class MoviesFragment : Fragment() {
             setHasFixedSize(true)
         }
 
-        //viewModel.getMovies()
         viewModel.movies.observe(this, Observer {
             moviesAdapter.loadData(it)
         })
 
         return binding.root
 
+    }
+
+    private fun goToDetailMovies(movies: ResultsMovie){
+        val i = Intent(activity, DetailMoviesActivity::class.java)
+        i.putExtra("data", movies)
+        startActivity(i)
     }
 
 }
