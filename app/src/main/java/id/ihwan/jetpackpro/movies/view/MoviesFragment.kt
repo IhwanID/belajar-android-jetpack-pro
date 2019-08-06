@@ -1,9 +1,7 @@
 package id.ihwan.jetpackpro.movies.view
 
-
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +15,7 @@ import id.ihwan.jetpackpro.databinding.FragmentMoviesBinding
 import id.ihwan.jetpackpro.movies.adapter.MoviesAdapter
 import id.ihwan.jetpackpro.R
 import id.ihwan.jetpackpro.network.response.ResultsMovie
+import id.ihwan.jetpackpro.utils.Status
 
 class MoviesFragment : Fragment() {
 
@@ -50,6 +49,21 @@ class MoviesFragment : Fragment() {
             moviesAdapter.loadData(it)
         })
 
+        viewModel.status.observe(this, Observer {
+            when(it){
+                Status.LOADING -> {
+                    binding.moviesRecyclerView.visibility = View.INVISIBLE
+                    binding.progressBar.visibility = View.VISIBLE
+                }
+                Status.DONE -> {
+                    binding.moviesRecyclerView.visibility = View.VISIBLE
+                    binding.progressBar.visibility = View.INVISIBLE
+                }
+                else -> {
+
+                }
+            }
+        })
         return binding.root
 
     }

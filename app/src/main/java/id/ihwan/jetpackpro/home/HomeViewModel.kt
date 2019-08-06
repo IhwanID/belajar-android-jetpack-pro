@@ -1,10 +1,13 @@
 package id.ihwan.jetpackpro.home
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import id.ihwan.jetpackpro.data.source.MovieRepository
 import id.ihwan.jetpackpro.network.response.ResultsMovie
 import id.ihwan.jetpackpro.network.response.ResultsTvShow
+import id.ihwan.jetpackpro.utils.EspressoIdlingResource
+import id.ihwan.jetpackpro.utils.Status
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -17,10 +20,7 @@ class HomeViewModel : ViewModel() {
     private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     init {
-        viewModelScope.launch {
-            repository.getMovie()
-            repository.getTvShow()
-        }
+        getData()
     }
 
     val repository = MovieRepository()
@@ -34,6 +34,27 @@ class HomeViewModel : ViewModel() {
 
     val tvShow: LiveData<List<ResultsTvShow>>
         get() = _tvShow
+
+    private val _status = MutableLiveData<Status>()
+
+    val status : LiveData<Status>
+        get() = _status
+
+    private fun getData(){
+        EspressoIdlingResource.increment()
+        viewModelScope.launch {
+            try {
+                _status.value = Status.LOADING
+                repository.getMovie()
+                repository.getTvShow()
+                _status.value = Status.DONE
+                EspressoIdlingResource.decrement()
+            } catch (e: Throwable) {
+                EspressoIdlingResource.decrement()
+               _status.value = Status.ERROR
+            }
+        }
+    }
 
     override fun onCleared() {
         super.onCleared()

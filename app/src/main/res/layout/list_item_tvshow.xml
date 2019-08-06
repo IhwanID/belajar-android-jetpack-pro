@@ -39,13 +39,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:text="@{model.name}"
                     tools:text="AQUAMAN"/>
-            <Button
-                    android:id="@+id/detailButton"
-                    android:text="See Detail"
-                    android:layout_gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
         </LinearLayout>
 
 

@@ -12,6 +12,7 @@ data class ResponseMovie(
 data class ResultsMovie(
     val id: Int? = 0 ,
     val title: String? = "",
+    val vote_average: String? = "",
     val popularity: String? = "",
     val poster_path: String? = "",
     val backdrop_path: String? = "",

@@ -15,6 +15,7 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 private const val BASE_URL = "https://api.themoviedb.org/3/"
+private const val API_KEY = "78adf61cd991fec888c055105c148a44"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -29,18 +30,18 @@ private val retrofit = Retrofit.Builder()
 interface TMDBApiService {
 
     @GET("movie/popular")
-    fun getPopularMovies(@Query("api_key") apiKey: String? = "78adf61cd991fec888c055105c148a44"): Deferred<ResponseMovie>
+    fun getPopularMovies(@Query("api_key") apiKey: String? = API_KEY): Deferred<ResponseMovie>
 
     @GET("tv/popular")
-    fun getPopularTvShow(@Query("api_key") apiKey: String? = "78adf61cd991fec888c055105c148a44"): Deferred<ResponseTvShow>
+    fun getPopularTvShow(@Query("api_key") apiKey: String? = API_KEY): Deferred<ResponseTvShow>
 
     @GET("movie/{id}")
     fun getDetailMovie(@Path("id") id: Int,
-                       @Query("api_key") apiKey: String? = "78adf61cd991fec888c055105c148a44"): Deferred<ResponseDetailMovie>
+                       @Query("api_key") apiKey: String? = API_KEY): Deferred<ResponseDetailMovie>
 
     @GET("tv/{id}")
     fun getDetailTvShow(@Path("id") id: Int,
-                        @Query("api_key") apiKey: String? = "78adf61cd991fec888c055105c148a44"): Deferred<ResponseTvShowDetail>
+                        @Query("api_key") apiKey: String? = API_KEY): Deferred<ResponseTvShowDetail>
 
 }
 

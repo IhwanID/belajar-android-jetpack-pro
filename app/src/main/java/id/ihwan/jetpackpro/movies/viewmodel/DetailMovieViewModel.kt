@@ -17,10 +17,10 @@ class DetailMovieViewModel: ViewModel(){
 
     val repository = MovieRepository()
 
-    private val _detailmovie : LiveData<ResponseDetailMovie> = repository.detailMovies
+    private val _detailMovie : LiveData<ResponseDetailMovie> = repository.detailMovies
 
     val detailMovie: LiveData<ResponseDetailMovie>
-        get() = _detailmovie
+        get() = _detailMovie
 
     fun getDetail(id: Int){
         viewModelScope.launch {

@@ -18,7 +18,7 @@ class DetailTvShowViewModel: ViewModel() {
 
     private val _detailTvShow : LiveData<ResponseTvShowDetail> = repository.detailTvShow
 
-    val detailMovie: LiveData<ResponseTvShowDetail>
+    val detailTvShow: LiveData<ResponseTvShowDetail>
         get() = _detailTvShow
 
     fun getDetail(id: Int){
