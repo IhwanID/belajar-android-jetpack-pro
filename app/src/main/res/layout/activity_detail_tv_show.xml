@@ -6,49 +6,54 @@
                 name="model"
                 type="id.ihwan.jetpackpro.network.response.ResponseTvShowDetail"/>
     </data>
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".tvshow.view.DetailTvShowActivity">
-
-        <ImageView
-                android:id="@+id/imageDetail"
-                android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:scaleType="centerCrop"
-                app:imageUrl="@{model.backdrop_path}"
-                tools:src="@drawable/poster_the_umbrella"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-        <TextView
-                android:id="@+id/titleDetail"
+            android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
-                android:text="@{model.name}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageDetail"
-                tools:text="The Umbrella Academy"/>
+                tools:context=".tvshow.view.DetailTvShowActivity">
 
-        <TextView
-                android:id="@+id/descriptionDetail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
-                android:text="@{model.overview}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/titleDetail"
-                tools:text="Lorem Ipsum "/>
+            <ImageView
+                    android:id="@+id/imageDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:scaleType="centerCrop"
+                    app:imageUrl="@{model.backdrop_path}"
+                    tools:src="@drawable/poster_the_umbrella"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                    android:id="@+id/titleDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="@{model.name}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageDetail"
+                    tools:text="The Umbrella Academy"/>
+
+            <TextView
+                    android:id="@+id/descriptionDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="@{model.overview}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/titleDetail"
+                    tools:text="Lorem Ipsum "/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
 </layout>

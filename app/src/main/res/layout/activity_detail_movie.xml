@@ -47,7 +47,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/titleDetail"
-                android:text="@{model.title}"
+                android:text="@{model.overview}"
                 tools:text="Lorem Ipsum "/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

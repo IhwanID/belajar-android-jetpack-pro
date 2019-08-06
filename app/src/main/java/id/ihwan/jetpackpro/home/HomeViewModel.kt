@@ -41,18 +41,11 @@ class HomeViewModel : ViewModel() {
         get() = _status
 
     private fun getData(){
-        EspressoIdlingResource.increment()
         viewModelScope.launch {
-            try {
                 _status.value = Status.LOADING
                 repository.getMovie()
                 repository.getTvShow()
                 _status.value = Status.DONE
-                EspressoIdlingResource.decrement()
-            } catch (e: Throwable) {
-                EspressoIdlingResource.decrement()
-               _status.value = Status.ERROR
-            }
         }
     }
 
