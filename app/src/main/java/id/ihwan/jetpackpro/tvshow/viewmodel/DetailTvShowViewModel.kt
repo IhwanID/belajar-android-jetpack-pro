@@ -1,32 +1,29 @@
-package id.ihwan.jetpackpro.movies.viewmodel
+package id.ihwan.jetpackpro.tvshow.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import id.ihwan.jetpackpro.data.source.MovieRepository
-import id.ihwan.jetpackpro.network.response.ResponseDetailMovie
+import id.ihwan.jetpackpro.network.response.ResponseTvShowDetail
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 
-class DetailMovieViewModel: ViewModel(){
-
+class DetailTvShowViewModel: ViewModel() {
     private val viewModelJob = SupervisorJob()
 
     private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     val repository = MovieRepository()
 
-    private val _detailmovie : LiveData<ResponseDetailMovie> = repository.detailMovies
+    private val _detailTvShow : LiveData<ResponseTvShowDetail> = repository.detailTvShow
 
-    val detailMovie: LiveData<ResponseDetailMovie>
-        get() = _detailmovie
+    val detailMovie: LiveData<ResponseTvShowDetail>
+        get() = _detailTvShow
 
     fun getDetail(id: Int){
         viewModelScope.launch {
-            repository.getDetailMovie(id)
+            repository.getDetailTvShow(id)
         }
     }
-
-
 }

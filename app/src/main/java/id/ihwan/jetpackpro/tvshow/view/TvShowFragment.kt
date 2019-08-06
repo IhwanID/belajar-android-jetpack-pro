@@ -1,8 +1,8 @@
 package id.ihwan.jetpackpro.tvshow.view
 
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import id.ihwan.jetpackpro.R
 import id.ihwan.jetpackpro.databinding.FragmentTvShowBinding
 import id.ihwan.jetpackpro.home.HomeViewModel
+import id.ihwan.jetpackpro.network.response.ResultsTvShow
 import id.ihwan.jetpackpro.tvshow.adapter.TvShowAdapter
 
 class TvShowFragment : Fragment() {
@@ -24,7 +25,9 @@ class TvShowFragment : Fragment() {
     }
 
     private val tvShowAdapter: TvShowAdapter by lazy {
-        TvShowAdapter{Log.d("", it.overview)}
+        TvShowAdapter{
+            goToDetailTvShow(it)
+        }
     }
 
     lateinit var binding: FragmentTvShowBinding
@@ -55,4 +58,9 @@ class TvShowFragment : Fragment() {
         return binding.root
     }
 
+    private fun goToDetailTvShow(tvShow: ResultsTvShow){
+        val i = Intent(activity, DetailTvShowActivity::class.java)
+        i.putExtra("id", tvShow.id)
+        startActivity(i)
+    }
 }

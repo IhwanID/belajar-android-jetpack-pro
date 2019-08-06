@@ -8,7 +8,6 @@ import id.ihwan.jetpackpro.network.response.ResultsTvShow
 
 class TvShowAdapter(val onClick: (ResultsTvShow) -> Unit) : RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>() {
 
-
     private var items: List<ResultsTvShow> = emptyList()
 
     fun loadData(items: List<ResultsTvShow>) {
@@ -25,7 +24,12 @@ class TvShowAdapter(val onClick: (ResultsTvShow) -> Unit) : RecyclerView.Adapter
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: TvShowViewHolder, position: Int) {
-        holder.bind(items[position])
+        val tvShow = items[position]
+        holder.apply {
+            bind(tvShow)
+            itemView.setOnClickListener { onClick(tvShow) }
+        }
+
     }
 
     class TvShowViewHolder(private val binding: ListItemTvshowBinding) : RecyclerView.ViewHolder(binding.root) {
