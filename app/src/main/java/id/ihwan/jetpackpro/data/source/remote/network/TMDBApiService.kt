@@ -19,13 +19,13 @@ interface TMDBApiService {
     suspend fun getPopularTvShow(@Query("api_key") apiKey: String? = API_KEY): ResponseTvShow
 
     @GET("movie/{id}")
-    fun getDetailMovie(@Path("id") id: Int,
+    suspend fun getDetailMovie(@Path("id") id: Int,
                        @Query("api_key") apiKey: String? = API_KEY
-    ): Deferred<ResponseDetailMovie>
+    ): ResponseDetailMovie
 
     @GET("tv/{id}")
-    fun getDetailTvShow(@Path("id") id: Int,
+    suspend fun getDetailTvShow(@Path("id") id: Int,
                         @Query("api_key") apiKey: String? = API_KEY
-    ): Deferred<ResponseTvShowDetail>
+    ): ResponseTvShowDetail
 
 }

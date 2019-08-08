@@ -9,4 +9,6 @@ class ClientService {
 
     suspend fun getMovies() = retrofitService.getPopularMovies().results
     suspend fun getTvShows() = retrofitService.getPopularTvShow().results
+    suspend fun getDetailMovie(id: Int) = retrofitService.getDetailMovie(id)
+    suspend fun getDetailTvShow(id: Int) = retrofitService.getDetailTvShow(id)
 }

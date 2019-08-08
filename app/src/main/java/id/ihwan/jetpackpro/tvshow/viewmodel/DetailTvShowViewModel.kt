@@ -1,6 +1,7 @@
 package id.ihwan.jetpackpro.tvshow.viewmodel
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import id.ihwan.jetpackpro.data.source.MovieRepository
 import id.ihwan.jetpackpro.data.source.remote.network.response.ResponseTvShowDetail
@@ -16,14 +17,14 @@ class DetailTvShowViewModel: ViewModel() {
 
     val repository = MovieRepository()
 
-    private val _detailTvShow : LiveData<ResponseTvShowDetail> = repository.detailTvShow
+    private val _detailTvShow = MutableLiveData<ResponseTvShowDetail>()
 
     val detailTvShow: LiveData<ResponseTvShowDetail>
         get() = _detailTvShow
 
     fun getDetail(id: Int){
         viewModelScope.launch {
-            repository.getDetailTvShow(id)
+            _detailTvShow.value = repository.getDetailTvShow(id)
         }
     }
 }

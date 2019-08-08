@@ -41,7 +41,8 @@ class DetailTvShowViewModelTest {
     @Test
     @Throws(Exception::class)
     fun getDetail() = runBlocking {
-        val data = repository.detailTvShow
+        val data = repository.getDetailTvShow(60735)
         assertNotNull(data)
+        assertEquals("The Flash", data.name)
     }
 }

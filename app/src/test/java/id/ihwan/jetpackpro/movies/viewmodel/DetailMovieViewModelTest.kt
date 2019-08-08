@@ -40,7 +40,8 @@ class DetailMovieViewModelTest {
     @Test
     @Throws(Exception::class)
     fun getDetail() = runBlocking {
-        val data = repository.detailMovies
+        val data = repository.getDetailMovie(550)
         assertNotNull(data)
+        assertEquals("Fight Club", data.title)
     }
 }
