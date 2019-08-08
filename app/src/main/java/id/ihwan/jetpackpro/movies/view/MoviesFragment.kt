@@ -14,7 +14,7 @@ import id.ihwan.jetpackpro.home.HomeViewModel
 import id.ihwan.jetpackpro.databinding.FragmentMoviesBinding
 import id.ihwan.jetpackpro.movies.adapter.MoviesAdapter
 import id.ihwan.jetpackpro.R
-import id.ihwan.jetpackpro.network.response.ResultsMovie
+import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsMovie
 import id.ihwan.jetpackpro.utils.Status
 
 class MoviesFragment : Fragment() {

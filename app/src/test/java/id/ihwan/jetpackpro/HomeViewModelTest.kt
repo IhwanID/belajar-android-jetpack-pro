@@ -22,12 +22,14 @@ class HomeViewModelTest{
     private lateinit var homeViewModel: HomeViewModel
     private lateinit var repository: MovieRepository
 
+
     @Before
     fun setUp() {
         Dispatchers.setMain(mainThreadSurrogate)
-        homeViewModel = HomeViewModel()
         repository = MovieRepository()
+        homeViewModel = HomeViewModel()
     }
+
 
     @After
     @Throws(IOException::class)
@@ -37,7 +39,8 @@ class HomeViewModelTest{
     @Test
     @Throws(Exception::class)
     fun getData() = runBlocking {
-        val movies = repository.movies
-        Assert.assertNotNull(movies)
+        val movies = repository.getMovie()
+        Assert.assertNotNull(movies?.size)
+        Assert.assertEquals(20, movies?.size)
     }
 }

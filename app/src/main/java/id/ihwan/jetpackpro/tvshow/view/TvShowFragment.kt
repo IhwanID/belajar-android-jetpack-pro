@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import id.ihwan.jetpackpro.R
 import id.ihwan.jetpackpro.databinding.FragmentTvShowBinding
 import id.ihwan.jetpackpro.home.HomeViewModel
-import id.ihwan.jetpackpro.network.response.ResultsTvShow
+import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsTvShow
 import id.ihwan.jetpackpro.tvshow.adapter.TvShowAdapter
 
 class TvShowFragment : Fragment() {

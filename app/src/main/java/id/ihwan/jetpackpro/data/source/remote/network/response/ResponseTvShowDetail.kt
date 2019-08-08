@@ -1,4 +1,4 @@
-package id.ihwan.jetpackpro.network.response
+package id.ihwan.jetpackpro.data.source.remote.network.response
 
 data class ResponseTvShowDetail(
     val name: String? = "",

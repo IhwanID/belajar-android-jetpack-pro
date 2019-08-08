@@ -8,7 +8,7 @@
     <data>
         <variable
                 name="model"
-                type="id.ihwan.jetpackpro.network.response.ResultsMovie"/>
+                type="id.ihwan.jetpackpro.data.source.remote.network.response.ResultsMovie"/>
     </data>
     <androidx.cardview.widget.CardView
             android:layout_width="match_parent"

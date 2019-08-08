@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import id.ihwan.jetpackpro.databinding.ListItemMoviesBinding
-import id.ihwan.jetpackpro.network.response.ResultsMovie
+import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsMovie
 
 
 class MoviesAdapter(val onClick: (ResultsMovie) -> Unit) : RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder>() {

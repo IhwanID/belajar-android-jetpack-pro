@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import id.ihwan.jetpackpro.databinding.ListItemTvshowBinding
-import id.ihwan.jetpackpro.network.response.ResultsTvShow
+import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsTvShow
 
 class TvShowAdapter(val onClick: (ResultsTvShow) -> Unit) : RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>() {
 

@@ -4,7 +4,7 @@
     <data>
         <variable
                 name="model"
-                type="id.ihwan.jetpackpro.network.response.ResponseTvShowDetail"/>
+                type="id.ihwan.jetpackpro.data.source.remote.network.response.ResponseTvShowDetail"/>
     </data>
     <ScrollView
             android:layout_width="match_parent"

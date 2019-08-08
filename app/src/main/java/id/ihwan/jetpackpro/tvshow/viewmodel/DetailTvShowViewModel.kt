@@ -3,7 +3,7 @@ package id.ihwan.jetpackpro.tvshow.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import id.ihwan.jetpackpro.data.source.MovieRepository
-import id.ihwan.jetpackpro.network.response.ResponseTvShowDetail
+import id.ihwan.jetpackpro.data.source.remote.network.response.ResponseTvShowDetail
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob

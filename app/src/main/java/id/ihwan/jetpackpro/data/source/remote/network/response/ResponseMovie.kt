@@ -1,4 +1,4 @@
-package id.ihwan.jetpackpro.network.response
+package id.ihwan.jetpackpro.data.source.remote.network.response
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
