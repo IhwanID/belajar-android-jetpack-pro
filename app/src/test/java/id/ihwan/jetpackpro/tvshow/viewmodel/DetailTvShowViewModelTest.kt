@@ -2,14 +2,12 @@ package id.ihwan.jetpackpro.tvshow.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import id.ihwan.jetpackpro.data.source.MovieRepository
+import id.ihwan.jetpackpro.util.LiveDataTestUtil
 import kotlinx.coroutines.*
 import kotlinx.coroutines.test.setMain
-import org.junit.After
-import org.junit.Before
+import org.junit.*
 
 import org.junit.Assert.*
-import org.junit.Rule
-import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.junit.MockitoJUnitRunner
 import java.io.IOException
@@ -42,7 +40,10 @@ class DetailTvShowViewModelTest {
     @Throws(Exception::class)
     fun getDetail() = runBlocking {
         val data = repository.getDetailTvShow(60735)
+        detailTvShowViewModel.getDetail(60735)
+        val liveData = detailTvShowViewModel.detailTvShow
         assertNotNull(data)
-        assertEquals("The Flash", data.name)
+        assertNotNull(LiveDataTestUtil.getValue(liveData))
+        assertEquals(data, LiveDataTestUtil.getValue(liveData))
     }
 }

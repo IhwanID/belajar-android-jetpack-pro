@@ -2,6 +2,7 @@ package id.ihwan.jetpackpro.movies.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import id.ihwan.jetpackpro.data.source.MovieRepository
+import id.ihwan.jetpackpro.util.LiveDataTestUtil
 import kotlinx.coroutines.*
 import kotlinx.coroutines.test.setMain
 import org.junit.After
@@ -41,7 +42,10 @@ class DetailMovieViewModelTest {
     @Throws(Exception::class)
     fun getDetail() = runBlocking {
         val data = repository.getDetailMovie(550)
+        detailMovieViewModel.getDetail(550)
+        val liveData = detailMovieViewModel.detailMovie
         assertNotNull(data)
-        assertEquals("Fight Club", data.title)
+        assertNotNull(LiveDataTestUtil.getValue(liveData))
+        assertEquals(data, LiveDataTestUtil.getValue(liveData))
     }
 }
