@@ -13,6 +13,15 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class HomeActivity : AppCompatActivity() {
 
+    /*
+    * TODO : Dapat menyimpan film ke database favorite.
+    * TODO : Dapat menghapus film dari database favorite.
+    * TODO : Terdapat halaman untuk menampilkan daftar Favorite Movies.
+    * TODO : Terdapat halaman untuk menampilkan daftar Favorite Tv Show.
+    * TODO : Menerapkan Room menyimpan data Favorite Movie dan Favorite Tv Show.
+    * TODO : Menerapkan Pagination untuk mengatur data pada RecyclerView.
+    */
+
     private lateinit var viewPager: ViewPager
 
     override fun onCreate(savedInstanceState: Bundle?) {
