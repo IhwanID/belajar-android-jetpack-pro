@@ -1,17 +1,22 @@
 package id.ihwan.jetpackpro.data.source.remote.network.response
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
-data class ResponseMovie(
+class ResponseData (
     val total_pages: Int? = 0,
-    val results: List<ResultsMovie>? = emptyList()
+    val results: List<ResultsData>? = emptyList()
 )
 
+@Entity
 @Parcelize
-data class ResultsMovie(
+data class ResultsData(
+    @PrimaryKey
     val id: Int? = 0 ,
     val title: String? = "",
+    val name: String? = "",
     val vote_average: String? = "",
     val popularity: String? = "",
     val poster_path: String? = "",

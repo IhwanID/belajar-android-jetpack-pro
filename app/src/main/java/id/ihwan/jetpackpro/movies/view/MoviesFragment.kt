@@ -14,8 +14,9 @@ import id.ihwan.jetpackpro.home.HomeViewModel
 import id.ihwan.jetpackpro.databinding.FragmentMoviesBinding
 import id.ihwan.jetpackpro.movies.adapter.MoviesAdapter
 import id.ihwan.jetpackpro.R
-import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsMovie
+import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
 import id.ihwan.jetpackpro.utils.Status
+import id.ihwan.jetpackpro.detail.DetailActivity
 
 class MoviesFragment : Fragment() {
 
@@ -68,9 +69,9 @@ class MoviesFragment : Fragment() {
 
     }
 
-    private fun goToDetailMovies(movies: ResultsMovie){
-        val i = Intent(activity, DetailMoviesActivity::class.java)
-        i.putExtra("id", movies.id)
+    private fun goToDetailMovies(movies: ResultsData){
+        val i = Intent(activity, DetailActivity::class.java)
+        i.putExtra("id", movies)
         startActivity(i)
     }
 

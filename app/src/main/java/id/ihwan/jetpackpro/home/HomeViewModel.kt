@@ -5,8 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import id.ihwan.jetpackpro.data.source.MovieRepository
-import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsMovie
-import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsTvShow
+import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
 import id.ihwan.jetpackpro.utils.EspressoIdlingResource
 import id.ihwan.jetpackpro.utils.Status
 import kotlinx.coroutines.cancel
@@ -16,14 +15,14 @@ class HomeViewModel : ViewModel() {
 
     val repository = MovieRepository()
 
-    private val _movie =  MutableLiveData<List<ResultsMovie>>()
+    private val _movie =  MutableLiveData<List<ResultsData>>()
 
-    val movies: LiveData<List<ResultsMovie>>
+    val movies: LiveData<List<ResultsData>>
         get() = _movie
 
-    private val _tvShow = MutableLiveData<List<ResultsTvShow>>()
+    private val _tvShow = MutableLiveData<List<ResultsData>>()
 
-    val tvShow: LiveData<List<ResultsTvShow>>
+    val tvShow: LiveData<List<ResultsData>>
         get() = _tvShow
 
     private val _status = MutableLiveData<Status>()

@@ -4,14 +4,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import id.ihwan.jetpackpro.databinding.ListItemMoviesBinding
-import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsMovie
+import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
 
 
-class MoviesAdapter(val onClick: (ResultsMovie) -> Unit) : RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder>() {
+class MoviesAdapter(val onClick: (ResultsData) -> Unit) : RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder>() {
 
-    private var items: List<ResultsMovie> = emptyList()
+    private var items: List<ResultsData> = emptyList()
 
-    fun loadData(items: List<ResultsMovie>) {
+    fun loadData(items: List<ResultsData>) {
         this.items = items
         notifyDataSetChanged()
     }
@@ -36,7 +36,7 @@ class MoviesAdapter(val onClick: (ResultsMovie) -> Unit) : RecyclerView.Adapter<
 
     class MoviesViewHolder(private val binding: ListItemMoviesBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(items: ResultsMovie) {
+        fun bind(items: ResultsData) {
             binding.apply {
                 model= items
                 executePendingBindings()

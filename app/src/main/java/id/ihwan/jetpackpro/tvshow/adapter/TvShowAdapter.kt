@@ -4,13 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import id.ihwan.jetpackpro.databinding.ListItemTvshowBinding
-import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsTvShow
+import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
 
-class TvShowAdapter(val onClick: (ResultsTvShow) -> Unit) : RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>() {
+class TvShowAdapter(val onClick: (ResultsData) -> Unit) : RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>() {
 
-    private var items: List<ResultsTvShow> = emptyList()
+    private var items: List<ResultsData> = emptyList()
 
-    fun loadData(items: List<ResultsTvShow>) {
+    fun loadData(items: List<ResultsData>) {
         this.items = items
         notifyDataSetChanged()
     }
@@ -34,7 +34,7 @@ class TvShowAdapter(val onClick: (ResultsTvShow) -> Unit) : RecyclerView.Adapter
 
     class TvShowViewHolder(private val binding: ListItemTvshowBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(items: ResultsTvShow) {
+        fun bind(items: ResultsData) {
             binding.apply {
                 model= items
                 executePendingBindings()

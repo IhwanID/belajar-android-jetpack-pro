@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import id.ihwan.jetpackpro.R
 import id.ihwan.jetpackpro.databinding.FragmentTvShowBinding
 import id.ihwan.jetpackpro.home.HomeViewModel
-import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsTvShow
+import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
 import id.ihwan.jetpackpro.tvshow.adapter.TvShowAdapter
 
 class TvShowFragment : Fragment() {
@@ -58,7 +58,7 @@ class TvShowFragment : Fragment() {
         return binding.root
     }
 
-    private fun goToDetailTvShow(tvShow: ResultsTvShow){
+    private fun goToDetailTvShow(tvShow: ResultsData){
         val i = Intent(activity, DetailTvShowActivity::class.java)
         i.putExtra("id", tvShow.id)
         startActivity(i)
