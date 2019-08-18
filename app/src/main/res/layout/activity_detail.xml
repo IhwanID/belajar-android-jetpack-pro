@@ -6,6 +6,7 @@
                 name="model"
                 type="id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData"/>
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -14,13 +15,15 @@
         <ImageView
                 android:id="@+id/imageDetail"
                 android:layout_width="match_parent"
-                app:imageUrl="@{model.backdrop_path}"
-                android:layout_height="400dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="240dp"
                 android:scaleType="centerCrop"
-                tools:src="@drawable/poster_the_umbrella"
+                app:imageUrl="@{model.backdrop_path}"
+                app:layout_constraintBottom_toTopOf="@+id/favorite_button"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/poster_the_umbrella"/>
 
         <TextView
                 android:id="@+id/titleDetail"
@@ -29,11 +32,11 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
+                android:text="@{model.title}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageDetail"
-                android:text="@{model.title}"
                 tools:text="The Umbrella Academy"/>
 
         <TextView
@@ -43,12 +46,24 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
+                android:text="@{model.overview}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/titleDetail"
-                android:text="@{model.overview}"
                 tools:text="Lorem Ipsum "/>
+
+        <Button
+                android:id="@+id/favorite_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="43dp"
+                android:text="Favorite"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageDetail"
+                />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

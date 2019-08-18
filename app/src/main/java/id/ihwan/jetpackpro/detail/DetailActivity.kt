@@ -27,5 +27,9 @@ class DetailActivity : AppCompatActivity() {
         viewModel.detail.observe(this, Observer {
             binding.model = it
         })
+
+        binding.favoriteButton.setOnClickListener {
+            //save to database
+        }
     }
 }

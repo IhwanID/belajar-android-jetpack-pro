@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import id.ihwan.jetpackpro.data.source.MovieRepository
+import id.ihwan.jetpackpro.data.source.local.FavoriteDatabase
 import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
 import id.ihwan.jetpackpro.utils.EspressoIdlingResource
 import id.ihwan.jetpackpro.utils.Status

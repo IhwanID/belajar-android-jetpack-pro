@@ -10,7 +10,7 @@ class ResponseData (
     val results: List<ResultsData>? = emptyList()
 )
 
-@Entity
+@Entity(tableName = "favorite_table")
 @Parcelize
 data class ResultsData(
     @PrimaryKey

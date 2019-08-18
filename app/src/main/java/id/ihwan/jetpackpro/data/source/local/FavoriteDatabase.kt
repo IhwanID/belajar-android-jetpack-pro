@@ -9,17 +9,26 @@ import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
 @Database(entities = [ResultsData::class], version = 1)
 abstract class FavoriteDatabase: RoomDatabase() {
     abstract val favoriteDao: FavoriteDao
-}
 
-private lateinit var INSTANCE: FavoriteDatabase
+    companion object {
+        @Volatile
+        private var INSTANCE: FavoriteDatabase? = null
 
-fun getDatabase(context: Context): FavoriteDatabase {
-    synchronized(FavoriteDatabase::class.java) {
-        if (!::INSTANCE.isInitialized) {
-            INSTANCE = Room.databaseBuilder(context.applicationContext,
-                FavoriteDatabase::class.java,
-                "favorite.db").build()
+        fun getDatabase(context: Context): FavoriteDatabase {
+            val tempInstance = INSTANCE
+            if (tempInstance != null) {
+                return tempInstance
+            }
+            synchronized(this) {
+                val instance = Room.databaseBuilder(
+                    context.applicationContext,
+                    FavoriteDatabase::class.java,
+                    "Favorite_database"
+                ).build()
+                INSTANCE = instance
+                return instance
+            }
         }
     }
-    return INSTANCE
+
 }

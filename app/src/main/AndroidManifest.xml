@@ -14,7 +14,6 @@
         <activity android:name=".detail.DetailActivity">
         </activity>
         <activity android:name=".tvshow.view.DetailTvShowActivity"/>
-        <activity android:name=".movies.view.DetailMoviesActivity"/>
         <activity android:name=".home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
