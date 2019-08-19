@@ -1,24 +1,50 @@
 package id.ihwan.jetpackpro.movies.adapter
 
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
 import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
-import id.ihwan.jetpackpro.home.HomeViewModel
+import id.ihwan.jetpackpro.databinding.ListItemMoviesBinding
 
-class MoviesPagedListAdapter: PagedListAdapter<ResultsData, HomeViewModel>(DIFF_CALLBACK){
-    override fun onBindViewHolder(holder: HomeViewModel, position: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+class MoviesPagedListAdapter(): PagedListAdapter<ResultsData,MoviesPagedListAdapter.MoviesViewHolder >(DIFF_CALLBACK){
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = ListItemMoviesBinding.inflate(inflater, parent, false)
+        return MoviesViewHolder(binding)
     }
 
+    override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
+        val movie = getItem(position)
+        holder.apply {
+            movie?.let { bind(it) }
+        }
+    }
+
+
     companion object{
-        private val DIFF_CALLBACK = object: DiffUtil.ItemCallback<ResultsData>{
+        private val DIFF_CALLBACK = object: DiffUtil.ItemCallback<ResultsData>(){
             override fun areContentsTheSame(oldItem: ResultsData, newItem: ResultsData): Boolean {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                return oldItem.id == newItem.id
             }
 
             override fun areItemsTheSame(oldItem: ResultsData, newItem: ResultsData): Boolean {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                return oldItem == newItem
             }
         }
     }
+
+    class MoviesViewHolder(private val binding: ListItemMoviesBinding) : RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(items: ResultsData) {
+            binding.apply {
+                model= items
+                executePendingBindings()
+            }
+        }
+
+    }
+
 }
