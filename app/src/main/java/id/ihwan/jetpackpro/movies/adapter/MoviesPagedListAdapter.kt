@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
 import id.ihwan.jetpackpro.databinding.ListItemMoviesBinding
 
-class MoviesPagedListAdapter(): PagedListAdapter<ResultsData,MoviesPagedListAdapter.MoviesViewHolder >(DIFF_CALLBACK){
+class MoviesPagedListAdapter(val onClick: (ResultsData) -> Unit): PagedListAdapter<ResultsData,MoviesPagedListAdapter.MoviesViewHolder >(DIFF_CALLBACK){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
         val inflater = LayoutInflater.from(parent.context)
