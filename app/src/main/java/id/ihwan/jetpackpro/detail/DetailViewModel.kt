@@ -18,8 +18,8 @@ class DetailViewModel(private val repository: MovieRepository) : ViewModel() {
         repository.addToFavorite(id)
     }
 
-    fun deteleFromFavorite(){
-
+    fun deteleFromFavorite(id: Int){
+        repository.deteleFromFavorite(id)
     }
 
 }

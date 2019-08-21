@@ -25,7 +25,7 @@ interface FavoriteDao {
     @Query("UPDATE favorite_table SET isFavorite = 1 WHERE id =:id")
     fun favoriteMovie(id: Int)
 
-    @Delete
-    fun delete(data: ResultsData)
+    @Query("UPDATE favorite_table SET isFavorite = 0 WHERE id =:id")
+    fun unFavoriteMovie(id: Int)
 
 }

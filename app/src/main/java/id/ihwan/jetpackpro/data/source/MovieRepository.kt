@@ -56,6 +56,10 @@ class MovieRepository(
         cache.addToFavorite(id)
     }
 
+    fun deteleFromFavorite(id: Int){
+        cache.deteleFromFavorite(id)
+    }
+
     companion object {
         private const val DATABASE_PAGE_SIZE = 10
     }

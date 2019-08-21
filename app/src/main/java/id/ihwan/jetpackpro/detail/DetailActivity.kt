@@ -30,8 +30,24 @@ class DetailActivity : AppCompatActivity() {
             binding.model = it
         })
 
-        binding.favoriteButton.setOnClickListener {
-            id.id?.let { it1 -> viewModel.addToFavorite(it1) }
+        binding.favoriteButton.apply {
+            when(id.isFavorite == 0){
+                true -> {
+                    text = "Add to Favorite"
+                    setOnClickListener {
+                        id.id?.let { it1 -> viewModel.addToFavorite(it1) }
+                    }
+
+                }
+                false -> {
+                    text = "UnFavorite"
+                    setOnClickListener {
+                        id.id?.let { it1 -> viewModel.deteleFromFavorite(it1) }
+                    }
+
+                }
+            }
+
         }
     }
 }
