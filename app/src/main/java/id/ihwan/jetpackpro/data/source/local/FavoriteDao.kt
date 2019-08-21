@@ -10,8 +10,11 @@ interface FavoriteDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(data: List<ResultsData>)
 
-    @Query("select * from favorite_table")
-    fun getAllFavorite(): DataSource.Factory<Int, ResultsData>
+    @Query("select * from favorite_table where name = :name")
+    fun getAllMovie(name: String): DataSource.Factory<Int, ResultsData>
+
+    @Query("select * from favorite_table where title = :title")
+    fun getAllTvShow(title: String): DataSource.Factory<Int, ResultsData>
 
     @Delete
     fun delete(data: ResultsData)

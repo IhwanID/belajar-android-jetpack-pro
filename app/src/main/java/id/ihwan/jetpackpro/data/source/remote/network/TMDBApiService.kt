@@ -18,7 +18,34 @@ fun getDataFromApi(
     onSuccess: (repos: List<ResultsData>) -> Unit,
     onError: (error: String) -> Unit
 ) {
-    service.getPopularMV(page = page).enqueue(
+    service.getPopularMovies(page = page).enqueue(
+        object : Callback<ResponseData> {
+            override fun onFailure(call: Call<ResponseData>?, t: Throwable) {
+                onError(t.message ?: "unknown error")
+            }
+
+            override fun onResponse(
+                call: Call<ResponseData>?,
+                response: Response<ResponseData>
+            ) {
+                if (response.isSuccessful) {
+                    val data = response.body()?.results ?: emptyList()
+                    onSuccess(data)
+                } else {
+                    onError(response.errorBody()?.string() ?: "Unknown error")
+                }
+            }
+        }
+    )
+}
+
+fun getDataTvShowFromApi(
+    service: TMDBApiService,
+    page: Int,
+    onSuccess: (repos: List<ResultsData>) -> Unit,
+    onError: (error: String) -> Unit
+) {
+    service.getPopularTvShow(page = page).enqueue(
         object : Callback<ResponseData> {
             override fun onFailure(call: Call<ResponseData>?, t: Throwable) {
                 onError(t.message ?: "unknown error")
@@ -42,16 +69,16 @@ fun getDataFromApi(
 interface TMDBApiService {
 
     @GET("movie/popular")
-    suspend fun getPopularMovies(
+    fun getPopularMovies(
         @Query("api_key") apiKey: String? = API_KEY,
         @Query("page") page: Int = 0
-    ): ResponseData
+    ): Call<ResponseData>
 
     @GET("tv/popular")
-    suspend fun getPopularTvShow(
+    fun getPopularTvShow(
         @Query("api_key") apiKey: String? = API_KEY,
         @Query("page") page: Int = 0
-    ): ResponseData
+    ): Call <ResponseData>
 
     @GET("movie/popular")
     fun getPopularMV(

@@ -11,8 +11,11 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel(private val repository: MovieRepository) : ViewModel() {
 
-    val repos: LiveData<PagedList<ResultsData>> = repository.search().data
-    val networkErrors: LiveData<String> = repository.search().networkErrors
+    val repos: LiveData<PagedList<ResultsData>> = repository.getDataMovies().data
+    val networkErrors: LiveData<String> = repository.getDataMovies().networkErrors
+
+    val dataTvShow: LiveData<PagedList<ResultsData>> = repository.getDataTvShow().data
+    val networkErrorsTvShow: LiveData<String> = repository.getDataTvShow().networkErrors
 
     //----new code-----//
 
@@ -35,16 +38,16 @@ class HomeViewModel(private val repository: MovieRepository) : ViewModel() {
        // getData()
     }
 
-    private fun getData(){
-        EspressoIdlingResource.increment()
-        viewModelScope.launch {
-                _status.value = Status.LOADING
-                _movie.value = repository.getMovie()
-                _tvShow.value = repository.getTvShow()
-                _status.value = Status.DONE
-            EspressoIdlingResource.decrement()
-        }
-    }
+//    private fun getData(){
+//        EspressoIdlingResource.increment()
+//        viewModelScope.launch {
+//                _status.value = Status.LOADING
+//                _movie.value = repository.getMovie()
+//                _tvShow.value = repository.getTvShow()
+//                _status.value = Status.DONE
+//            EspressoIdlingResource.decrement()
+//        }
+//    }
 
     fun insert(data: List<ResultsData>){
         viewModelScope.launch {

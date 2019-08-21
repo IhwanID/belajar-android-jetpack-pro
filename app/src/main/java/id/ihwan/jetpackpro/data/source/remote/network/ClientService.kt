@@ -7,6 +7,4 @@ class ClientService {
 
     private val retrofitService = RetrofitBuilder.getInstance(BASE_URL).create(TMDBApiService::class.java)
 
-    suspend fun getMovies() = retrofitService.getPopularMovies().results
-    suspend fun getTvShows() = retrofitService.getPopularTvShow().results
 }
