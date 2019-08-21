@@ -7,7 +7,7 @@
     <RelativeLayout
                  android:layout_width="match_parent"
                  android:layout_height="match_parent"
-                 tools:context=".movies.view.MoviesFragment">
+                 tools:context=".home.movies.view.MoviesFragment">
 
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/moviesRecyclerView"

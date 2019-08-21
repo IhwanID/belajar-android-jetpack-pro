@@ -1,4 +1,4 @@
-package id.ihwan.jetpackpro.movies.view
+package id.ihwan.jetpackpro.home.movies.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -14,12 +14,11 @@ import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.ihwan.jetpackpro.home.HomeViewModel
 import id.ihwan.jetpackpro.databinding.FragmentMoviesBinding
-import id.ihwan.jetpackpro.movies.adapter.MoviesAdapter
+import id.ihwan.jetpackpro.home.movies.adapter.MoviesAdapter
 import id.ihwan.jetpackpro.R
 import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
-import id.ihwan.jetpackpro.utils.Status
 import id.ihwan.jetpackpro.detail.DetailActivity
-import id.ihwan.jetpackpro.movies.adapter.MoviesPagedListAdapter
+import id.ihwan.jetpackpro.home.movies.adapter.MoviesPagedListAdapter
 import id.ihwan.jetpackpro.utils.Injection
 
 class MoviesFragment : Fragment() {
@@ -28,16 +27,6 @@ class MoviesFragment : Fragment() {
         fun newInstance(): MoviesFragment {
             return MoviesFragment()
         }
-    }
-
-//    private val viewModel by lazy {
-//        //ViewModelProviders.of(this).get(HomeViewModel::class.java)
-//        ViewModelProviders.of(this, Injection.provideViewModelFactory(requireContext()))
-//            .get(HomeViewModel::class.java)
-//    }
-
-    private val moviesAdapter: MoviesAdapter by lazy {
-        MoviesAdapter{ goToDetailMovies(it) }
     }
 
     private val adapterList: MoviesPagedListAdapter by lazy {

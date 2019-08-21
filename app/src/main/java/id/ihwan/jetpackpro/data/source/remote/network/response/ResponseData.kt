@@ -17,6 +17,9 @@ data class ResponseDataResult(
     val networkErrors: LiveData<String>
 )
 
+data class ResponseDataResultLocal(
+    val data: LiveData<PagedList<ResultsData>>
+)
 
 @Parcelize
 @Entity(tableName = "favorite_table")
@@ -30,5 +33,6 @@ data class ResultsData(
     val poster_path: String? = "",
     val backdrop_path: String? = "",
     val overview: String? = "",
-    val release_date: String? = ""
+    val release_date: String? = "",
+    var isFavorite: Int? = 0
 ): Parcelable

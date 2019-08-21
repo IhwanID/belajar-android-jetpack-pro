@@ -8,13 +8,15 @@ import androidx.lifecycle.ViewModelProviders
 import id.ihwan.jetpackpro.R
 import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
 import id.ihwan.jetpackpro.databinding.ActivityDetailBinding
+import id.ihwan.jetpackpro.utils.Injection
 
 class DetailActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityDetailBinding
 
     private val viewModel by lazy {
-        ViewModelProviders.of(this).get(DetailViewModel::class.java)
+         ViewModelProviders.of(this, Injection.provideViewModelFactory(this))
+            .get(DetailViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,7 +31,7 @@ class DetailActivity : AppCompatActivity() {
         })
 
         binding.favoriteButton.setOnClickListener {
-            //save to database
+            id.id?.let { it1 -> viewModel.addToFavorite(it1) }
         }
     }
 }

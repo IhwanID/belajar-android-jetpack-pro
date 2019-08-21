@@ -1,4 +1,4 @@
-package id.ihwan.jetpackpro.tvshow.view
+package id.ihwan.jetpackpro.home.tvshow.view
 
 
 import android.content.Intent
@@ -17,9 +17,9 @@ import id.ihwan.jetpackpro.R
 import id.ihwan.jetpackpro.databinding.FragmentTvShowBinding
 import id.ihwan.jetpackpro.home.HomeViewModel
 import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
-import id.ihwan.jetpackpro.tvshow.adapter.TvShowAdapter
+import id.ihwan.jetpackpro.home.tvshow.adapter.TvShowAdapter
 import id.ihwan.jetpackpro.detail.DetailActivity
-import id.ihwan.jetpackpro.movies.adapter.MoviesPagedListAdapter
+import id.ihwan.jetpackpro.home.movies.adapter.MoviesPagedListAdapter
 import id.ihwan.jetpackpro.utils.Injection
 
 

@@ -1,4 +1,4 @@
-package id.ihwan.jetpackpro.movies.adapter
+package id.ihwan.jetpackpro.home.movies.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

@@ -16,6 +16,15 @@ interface FavoriteDao {
     @Query("select * from favorite_table where title = :title")
     fun getAllTvShow(title: String): DataSource.Factory<Int, ResultsData>
 
+    @Query("select * from favorite_table where name = :title and isFavorite = 1")
+    fun getAllFavoriteMovie(title: String): DataSource.Factory<Int, ResultsData>
+
+    @Query("select * from favorite_table where title = :title and isFavorite = 1")
+    fun getAllFavoriteTvShow(title: String): DataSource.Factory<Int, ResultsData>
+
+    @Query("UPDATE favorite_table SET isFavorite = 1 WHERE id =:id")
+    fun favoriteMovie(id: Int)
+
     @Delete
     fun delete(data: ResultsData)
 

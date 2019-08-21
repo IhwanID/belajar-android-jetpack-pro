@@ -1,4 +1,4 @@
-package id.ihwan.jetpackpro.tvshow.adapter
+package id.ihwan.jetpackpro.home.tvshow.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

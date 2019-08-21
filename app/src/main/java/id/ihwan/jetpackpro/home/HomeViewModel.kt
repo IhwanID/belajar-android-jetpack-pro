@@ -4,7 +4,6 @@ import androidx.lifecycle.*
 import androidx.paging.PagedList
 import id.ihwan.jetpackpro.data.source.MovieRepository
 import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
-import id.ihwan.jetpackpro.utils.EspressoIdlingResource
 import id.ihwan.jetpackpro.utils.Status
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch

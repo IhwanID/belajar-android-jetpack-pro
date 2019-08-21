@@ -23,4 +23,13 @@ class TMDBLocalCache(
     fun getAllTvShowData(): DataSource.Factory<Int, ResultsData>{
         return favoriteDao.getAllTvShow("")
     }
+
+    fun getMoviesFavorite(): DataSource.Factory<Int, ResultsData>{
+        return favoriteDao.getAllFavoriteMovie("")
+    }
+    fun addToFavorite(id: Int){
+        ioExecutor.execute {
+            favoriteDao.favoriteMovie(id)
+        }
+    }
 }

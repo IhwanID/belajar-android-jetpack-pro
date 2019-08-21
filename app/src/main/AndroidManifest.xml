@@ -15,7 +15,7 @@
         </activity>
         <activity android:name=".detail.DetailActivity">
         </activity>
-        <activity android:name=".tvshow.view.DetailTvShowActivity"/>
+        <activity android:name="id.ihwan.jetpackpro.home.tvshow.view.DetailTvShowActivity"/>
         <activity android:name=".home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
