@@ -46,15 +46,15 @@ class TvShowFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tv_show, container, false)
         binding.lifecycleOwner = this@TvShowFragment
 
-        binding.tvShowRecyclerView.apply {
-            adapter = tvShowAdapter
-            layoutManager = LinearLayoutManager(activity)
-            setHasFixedSize(true)
-        }
-
-        viewModel.tvShow.observe(this, Observer {
-            tvShowAdapter.loadData(it)
-        })
+//        binding.tvShowRecyclerView.apply {
+//            adapter = tvShowAdapter
+//            layoutManager = LinearLayoutManager(activity)
+//            setHasFixedSize(true)
+//        }
+//
+//        viewModel.tvShow.observe(this, Observer {
+//            tvShowAdapter.loadData(it)
+//        })
 
         return binding.root
     }

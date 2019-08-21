@@ -5,10 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.ihwan.jetpackpro.home.HomeViewModel
 import id.ihwan.jetpackpro.databinding.FragmentMoviesBinding
@@ -17,6 +19,8 @@ import id.ihwan.jetpackpro.R
 import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
 import id.ihwan.jetpackpro.utils.Status
 import id.ihwan.jetpackpro.detail.DetailActivity
+import id.ihwan.jetpackpro.movies.adapter.MoviesPagedListAdapter
+import id.ihwan.jetpackpro.utils.Injection
 
 class MoviesFragment : Fragment() {
 
@@ -26,13 +30,22 @@ class MoviesFragment : Fragment() {
         }
     }
 
-    private val viewModel by lazy {
-        ViewModelProviders.of(this).get(HomeViewModel::class.java)
-    }
+//    private val viewModel by lazy {
+//        //ViewModelProviders.of(this).get(HomeViewModel::class.java)
+//        ViewModelProviders.of(this, Injection.provideViewModelFactory(requireContext()))
+//            .get(HomeViewModel::class.java)
+//    }
 
     private val moviesAdapter: MoviesAdapter by lazy {
         MoviesAdapter{ goToDetailMovies(it) }
     }
+
+    private val adapterList: MoviesPagedListAdapter by lazy {
+        MoviesPagedListAdapter{ goToDetailMovies(it) }
+    }
+
+    private lateinit var viewModel: HomeViewModel
+
 
     lateinit var binding: FragmentMoviesBinding
 
@@ -40,31 +53,42 @@ class MoviesFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_movies, container, false)
         binding.lifecycleOwner = this@MoviesFragment
 
+        viewModel = ViewModelProviders.of(this, Injection.provideViewModelFactory(requireContext()))
+            .get(HomeViewModel::class.java)
+
         binding.moviesRecyclerView.apply {
-            adapter = moviesAdapter
+            adapter = adapterList
             layoutManager = LinearLayoutManager(activity)
             setHasFixedSize(true)
         }
 
-        viewModel.movies.observe(this, Observer {
-            moviesAdapter.loadData(it)
+        viewModel.repos.observe(this, Observer<PagedList<ResultsData>> {
+            adapterList.submitList(it)
         })
 
-        viewModel.status.observe(this, Observer {
-            when(it){
-                Status.LOADING -> {
-                    binding.moviesRecyclerView.visibility = View.INVISIBLE
-                    binding.progressBar.visibility = View.VISIBLE
-                }
-                Status.DONE -> {
-                    binding.moviesRecyclerView.visibility = View.VISIBLE
-                    binding.progressBar.visibility = View.INVISIBLE
-                }
-                else -> {
-
-                }
-            }
+        viewModel.networkErrors.observe(this, Observer<String> {
+            Toast.makeText(requireContext(), "\uD83D\uDE28 Wooops $it", Toast.LENGTH_LONG).show()
         })
+//
+//        viewModel.movies.observe(this, Observer {
+//            moviesAdapter.loadData(it)
+//        })
+//
+//        viewModel.status.observe(this, Observer {
+//            when(it){
+//                Status.LOADING -> {
+//                    binding.moviesRecyclerView.visibility = View.INVISIBLE
+//                    binding.progressBar.visibility = View.VISIBLE
+//                }
+//                Status.DONE -> {
+//                    binding.moviesRecyclerView.visibility = View.VISIBLE
+//                    binding.progressBar.visibility = View.INVISIBLE
+//                }
+//                else -> {
+//
+//                }
+//            }
+//        })
         return binding.root
 
     }

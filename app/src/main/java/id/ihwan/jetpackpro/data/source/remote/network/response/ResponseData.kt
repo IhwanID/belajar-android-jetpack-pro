@@ -1,6 +1,8 @@
 package id.ihwan.jetpackpro.data.source.remote.network.response
 
 import android.os.Parcelable
+import androidx.lifecycle.LiveData
+import androidx.paging.PagedList
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
@@ -8,6 +10,11 @@ import kotlinx.android.parcel.Parcelize
 class ResponseData (
     val total_pages: Int? = 0,
     val results: List<ResultsData>? = emptyList()
+)
+
+data class ResponseDataResult(
+    val data: LiveData<PagedList<ResultsData>>,
+    val networkErrors: LiveData<String>
 )
 
 

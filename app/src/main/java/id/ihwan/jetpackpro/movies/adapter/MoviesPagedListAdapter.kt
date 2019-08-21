@@ -19,7 +19,11 @@ class MoviesPagedListAdapter(val onClick: (ResultsData) -> Unit): PagedListAdapt
     override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
         val movie = getItem(position)
         holder.apply {
-            movie?.let { bind(it) }
+            movie?.let {data ->
+                bind(data)
+                itemView.setOnClickListener { onClick(data) }
+            }
+
         }
     }
 

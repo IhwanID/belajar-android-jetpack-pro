@@ -10,14 +10,10 @@ import kotlinx.coroutines.launch
 
 class DetailViewModel : ViewModel() {
 
-    val repository = MovieRepository()
-
     var _detail = MutableLiveData<ResultsData>()
 
     val detail: LiveData<ResultsData>
         get() = _detail
 
-    fun insert(data: ResultsData) = viewModelScope.launch {
-        //insert data to room here
-    }
+
 }

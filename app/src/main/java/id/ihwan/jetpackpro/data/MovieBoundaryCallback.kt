@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.paging.PagedList
 import id.ihwan.jetpackpro.data.source.local.TMDBLocalCache
 import id.ihwan.jetpackpro.data.source.remote.network.TMDBApiService
+import id.ihwan.jetpackpro.data.source.remote.network.getDataFromApi
 import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
 
 class MovieBoundaryCallback(
@@ -23,18 +24,26 @@ class MovieBoundaryCallback(
     private var isRequestInProgress = false
 
     override fun onZeroItemsLoaded() {
-        super.onZeroItemsLoaded()
+        requestAndSaveData()
     }
 
     override fun onItemAtEndLoaded(itemAtEnd: ResultsData) {
-        super.onItemAtEndLoaded(itemAtEnd)
+        requestAndSaveData()
     }
 
     private fun requestAndSaveData() {
+        if (isRequestInProgress) return
 
+        isRequestInProgress = true
+        getDataFromApi(service, lastRequestedPage, { data ->
+            cache.insert(data) {
+                lastRequestedPage++
+                isRequestInProgress = false
+            }
+        }, { error ->
+            _networkErrors.postValue(error)
+            isRequestInProgress = false
+        })
     }
 
-    companion object{
-        private const val NETWORK_PAGE_SIZE = 50
-    }
 }

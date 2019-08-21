@@ -1,20 +1,20 @@
 package id.ihwan.jetpackpro.home
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+import androidx.paging.PagedList
 import id.ihwan.jetpackpro.data.source.MovieRepository
-import id.ihwan.jetpackpro.data.source.local.FavoriteDatabase
 import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
 import id.ihwan.jetpackpro.utils.EspressoIdlingResource
 import id.ihwan.jetpackpro.utils.Status
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(private val repository: MovieRepository) : ViewModel() {
 
-    val repository = MovieRepository()
+    val repos: LiveData<PagedList<ResultsData>> = repository.search().data
+    val networkErrors: LiveData<String> = repository.search().networkErrors
+
+    //----new code-----//
 
     private val _movie =  MutableLiveData<List<ResultsData>>()
 
@@ -32,7 +32,7 @@ class HomeViewModel : ViewModel() {
         get() = _status
 
     init {
-        getData()
+       // getData()
     }
 
     private fun getData(){
@@ -43,6 +43,12 @@ class HomeViewModel : ViewModel() {
                 _tvShow.value = repository.getTvShow()
                 _status.value = Status.DONE
             EspressoIdlingResource.decrement()
+        }
+    }
+
+    fun insert(data: List<ResultsData>){
+        viewModelScope.launch {
+            //favoriteDao.insert(data)
         }
     }
 
