@@ -63,8 +63,8 @@ class MovieRepository(
         cache.addToFavorite(id)
     }
 
-    fun deteleFromFavorite(id: Int){
-        cache.deteleFromFavorite(id)
+    fun deleteFromFavorite(id: Int){
+        cache.deleteFromFavorite(id)
     }
 
     companion object {

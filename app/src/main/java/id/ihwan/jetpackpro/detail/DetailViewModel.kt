@@ -19,7 +19,7 @@ class DetailViewModel(private val repository: MovieRepository) : ViewModel() {
     }
 
     fun deteleFromFavorite(id: Int){
-        repository.deteleFromFavorite(id)
+        repository.deleteFromFavorite(id)
     }
 
 }

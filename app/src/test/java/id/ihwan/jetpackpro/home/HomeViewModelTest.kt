@@ -1,16 +1,21 @@
 package id.ihwan.jetpackpro.home
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.paging.PagedList
 import id.ihwan.jetpackpro.data.source.MovieRepository
+import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
+import id.ihwan.jetpackpro.utils.Injection
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
-
-import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 import org.mockito.Mock
+import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 
 @RunWith(JUnit4::class)
@@ -37,6 +42,6 @@ class HomeViewModelTest {
 
     @Test
     fun getDataMovies() {
-        
+
     }
 }

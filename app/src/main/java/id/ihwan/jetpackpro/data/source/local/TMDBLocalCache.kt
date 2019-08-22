@@ -9,9 +9,9 @@ class TMDBLocalCache(
     private val ioExecutor: Executor
 ) {
 
-    fun insert(repos: List<ResultsData>, insertFinished: () -> Unit) {
+    fun insert(data: List<ResultsData>, insertFinished: () -> Unit) {
         ioExecutor.execute {
-            favoriteDao.insert(repos)
+            favoriteDao.insert(data)
             insertFinished()
         }
     }
@@ -38,7 +38,7 @@ class TMDBLocalCache(
         }
     }
 
-    fun deteleFromFavorite(id: Int){
+    fun deleteFromFavorite(id: Int){
         ioExecutor.execute {
             favoriteDao.unFavoriteMovie(id)
         }
