@@ -8,7 +8,6 @@ import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
 class ResponseData (
-    val total_pages: Int? = 0,
     val results: List<ResultsData>? = emptyList()
 )
 

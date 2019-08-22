@@ -16,11 +16,10 @@ class TvShowBoundaryCallback(
     private var lastRequestedPage = 1
 
     private val _networkErrors = MutableLiveData<String>()
-    // LiveData of network errors.
+
     val networkErrors: LiveData<String>
         get() = _networkErrors
 
-    // avoid triggering multiple requests in the same time
     private var isRequestInProgress = false
 
     override fun onZeroItemsLoaded() {

@@ -17,24 +17,12 @@ import id.ihwan.jetpackpro.R
 import id.ihwan.jetpackpro.databinding.FragmentTvShowBinding
 import id.ihwan.jetpackpro.home.HomeViewModel
 import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
-import id.ihwan.jetpackpro.home.tvshow.adapter.TvShowAdapter
 import id.ihwan.jetpackpro.detail.DetailActivity
 import id.ihwan.jetpackpro.home.movies.adapter.MoviesPagedListAdapter
 import id.ihwan.jetpackpro.utils.Injection
 
 
 class TvShowFragment : Fragment() {
-
-
-//    private val viewModel by lazy {
-//        ViewModelProviders.of(this).get(HomeViewModel::class.java)
-//    }
-
-    private val tvShowAdapter: TvShowAdapter by lazy {
-        TvShowAdapter{
-            goToDetailTvShow(it)
-        }
-    }
 
     lateinit var binding: FragmentTvShowBinding
 
@@ -73,10 +61,6 @@ class TvShowFragment : Fragment() {
         viewModel.networkErrorsTvShow.observe(this, Observer<String> {
             Toast.makeText(requireContext(), "\uD83D\uDE28 Wooops $it", Toast.LENGTH_LONG).show()
         })
-
-//        viewModel.tvShow.observe(this, Observer {
-//            tvShowAdapter.loadData(it)
-//        })
 
         return binding.root
     }

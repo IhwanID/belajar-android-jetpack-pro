@@ -9,4 +9,5 @@ import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
 class FavoriteViewModel(private val repository: MovieRepository) : ViewModel() {
 
     val favMovies: LiveData<PagedList<ResultsData>> = repository.getMoviesFromFavorite().data
+    val favTvShow: LiveData<PagedList<ResultsData>> = repository.getTvShowFromFavorite().data
 }

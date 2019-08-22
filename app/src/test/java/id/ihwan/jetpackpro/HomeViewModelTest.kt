@@ -29,8 +29,6 @@ class HomeViewModelTest{
     @Before
     fun setUp() {
         Dispatchers.setMain(mainThreadSurrogate)
-        repository = MovieRepository()
-        homeViewModel = HomeViewModel()
     }
 
 
@@ -42,21 +40,6 @@ class HomeViewModelTest{
     @Test
     @Throws(Exception::class)
     fun getData() = runBlocking {
-        val movies = repository.getMovie()
-        val moviesLiveData = homeViewModel.movies
-        val tvShow = repository.getTvShow()
-        val tvShowLiveData = homeViewModel.tvShow
 
-        assertNotNull(movies?.size)
-        assertEquals(20, movies?.size)
-
-        assertNotNull(tvShow?.size)
-        assertEquals(20, tvShow?.size)
-
-        assertNotNull(LiveDataTestUtil.getValue(moviesLiveData).size)
-        assertNotNull(LiveDataTestUtil.getValue(tvShowLiveData).size)
-
-        assertEquals(movies, LiveDataTestUtil.getValue(moviesLiveData))
-        assertEquals(tvShow, LiveDataTestUtil.getValue(tvShowLiveData))
     }
 }

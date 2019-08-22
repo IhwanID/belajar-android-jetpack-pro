@@ -15,7 +15,7 @@ import retrofit2.http.Query
 fun getDataFromApi(
     service: TMDBApiService,
     page: Int,
-    onSuccess: (repos: List<ResultsData>) -> Unit,
+    onSuccess: (data: List<ResultsData>) -> Unit,
     onError: (error: String) -> Unit
 ) {
     service.getPopularMovies(page = page).enqueue(
@@ -42,7 +42,7 @@ fun getDataFromApi(
 fun getDataTvShowFromApi(
     service: TMDBApiService,
     page: Int,
-    onSuccess: (repos: List<ResultsData>) -> Unit,
+    onSuccess: (data: List<ResultsData>) -> Unit,
     onError: (error: String) -> Unit
 ) {
     service.getPopularTvShow(page = page).enqueue(
@@ -80,12 +80,6 @@ interface TMDBApiService {
         @Query("page") page: Int = 0
     ): Call <ResponseData>
 
-    @GET("movie/popular")
-    fun getPopularMV(
-        @Query("api_key") apiKey: String? = API_KEY,
-        @Query("page") page: Int = 0
-    ): Call<ResponseData>
-
     companion object {
         private const val BASE_URL = "https://api.themoviedb.org/3/"
 
@@ -96,6 +90,7 @@ interface TMDBApiService {
             val client = OkHttpClient.Builder()
                 .addInterceptor(logger)
                 .build()
+
             return Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(client)
