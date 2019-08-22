@@ -10,8 +10,6 @@ import org.junit.Before
 import org.junit.Test
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.rule.ActivityTestRule
-import id.ihwan.jetpackpro.RecyclerViewItemCountAssertion
-
 import id.ihwan.jetpackpro.SingleFragmentActivity
 import id.ihwan.jetpackpro.home.tvshow.view.TvShowFragment
 import id.ihwan.jetpackpro.utils.EspressoIdlingResource
@@ -39,6 +37,5 @@ class TvShowFragmentTest {
     @Test
     fun getData() {
         onView(withId(R.id.tvShowRecyclerView)).check(matches(isDisplayed()))
-        onView(withId(R.id.tvShowRecyclerView)).check(RecyclerViewItemCountAssertion(20))
     }
 }

@@ -50,7 +50,7 @@ class MoviesFragment : Fragment() {
             setHasFixedSize(true)
         }
 
-        viewModel.repos.observe(this, Observer<PagedList<ResultsData>> {
+        viewModel.dataMovies.observe(this, Observer<PagedList<ResultsData>> {
             adapterList.submitList(it)
         })
 

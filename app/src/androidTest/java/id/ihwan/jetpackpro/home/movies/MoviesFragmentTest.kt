@@ -7,7 +7,6 @@ import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.rule.ActivityTestRule
 import id.ihwan.jetpackpro.R
-import id.ihwan.jetpackpro.RecyclerViewItemCountAssertion
 import id.ihwan.jetpackpro.SingleFragmentActivity
 import id.ihwan.jetpackpro.home.movies.view.MoviesFragment
 import id.ihwan.jetpackpro.utils.EspressoIdlingResource
@@ -38,6 +37,5 @@ class MoviesFragmentTest {
     @Test
     fun getData() {
         onView(ViewMatchers.withId(R.id.moviesRecyclerView)).check(matches(isDisplayed()))
-        onView(ViewMatchers.withId(R.id.moviesRecyclerView)).check(RecyclerViewItemCountAssertion(20))
     }
 }
