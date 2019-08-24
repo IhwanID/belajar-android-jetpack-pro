@@ -4,11 +4,20 @@ import androidx.paging.DataSource
 import androidx.room.*
 import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
 
+/**
+ * Data Access Object for the favorite table.
+ */
 @Dao
 interface FavoriteDao {
 
+    /**
+     * Insert a movie / tvShow in the database. If the task already exists, replace it.
+     *
+     * @param data the movie / tvShow to be inserted.
+     */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(data: List<ResultsData>)
+
 
     @Query("select * from favorite_table where name = :name")
     fun getAllMovie(name: String): DataSource.Factory<Int, ResultsData>

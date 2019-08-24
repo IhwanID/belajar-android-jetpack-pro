@@ -3,14 +3,14 @@ package id.ihwan.jetpackpro.data
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PagedList
-import id.ihwan.jetpackpro.data.source.local.TMDBLocalCache
+import id.ihwan.jetpackpro.data.source.local.LocalDataSource
 import id.ihwan.jetpackpro.data.source.remote.network.TMDBApiService
 import id.ihwan.jetpackpro.data.source.remote.network.getDataFromApi
 import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
 
 class MovieBoundaryCallback(
     private val service: TMDBApiService,
-    private val cache: TMDBLocalCache
+    private val cache: LocalDataSource
 ) : PagedList.BoundaryCallback<ResultsData>() {
 
     private var lastRequestedPage = 1

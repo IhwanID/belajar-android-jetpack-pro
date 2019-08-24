@@ -7,17 +7,19 @@ import id.ihwan.jetpackpro.detail.DetailViewModel
 import id.ihwan.jetpackpro.favorite.FavoriteViewModel
 import id.ihwan.jetpackpro.home.HomeViewModel
 
-class ViewModelFactory(private val repository: MovieRepository) : ViewModelProvider.Factory {
-
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        when {
-            modelClass.isAssignableFrom(HomeViewModel::class.java) -> @Suppress("UNCHECKED_CAST")
-            return HomeViewModel(repository) as T
-            modelClass.isAssignableFrom(DetailViewModel::class.java) -> @Suppress("UNCHECKED_CAST")
-            return DetailViewModel(repository) as T
-            modelClass.isAssignableFrom(FavoriteViewModel::class.java) -> @Suppress("UNCHECKED_CAST")
-            return FavoriteViewModel(repository) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class")
-    }
+@Suppress("UNCHECKED_CAST")
+class ViewModelFactory constructor(private val repository: MovieRepository) : ViewModelProvider.Factory {
+   override fun <T : ViewModel> create(modelClass: Class<T>) =
+       with(modelClass) {
+           when {
+               isAssignableFrom(HomeViewModel::class.java) ->
+                   HomeViewModel(repository)
+               isAssignableFrom(DetailViewModel::class.java) ->
+                   DetailViewModel(repository)
+               isAssignableFrom(FavoriteViewModel::class.java) ->
+                   FavoriteViewModel(repository)
+               else ->
+                   throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
+           }
+       } as T
 }

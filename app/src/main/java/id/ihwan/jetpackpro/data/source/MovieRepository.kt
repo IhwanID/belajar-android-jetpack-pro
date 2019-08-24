@@ -3,14 +3,14 @@ package id.ihwan.jetpackpro.data.source
 import androidx.paging.LivePagedListBuilder
 import id.ihwan.jetpackpro.data.MovieBoundaryCallback
 import id.ihwan.jetpackpro.data.TvShowBoundaryCallback
-import id.ihwan.jetpackpro.data.source.local.TMDBLocalCache
+import id.ihwan.jetpackpro.data.source.local.LocalDataSource
 import id.ihwan.jetpackpro.data.source.remote.network.TMDBApiService
 import id.ihwan.jetpackpro.data.source.remote.network.response.ResponseDataResult
 import id.ihwan.jetpackpro.data.source.remote.network.response.ResponseDataResultLocal
 
 class MovieRepository(
     private val service: TMDBApiService,
-    private val cache: TMDBLocalCache
+    private val cache: LocalDataSource
 ) {
 
     fun getDataMovies(): ResponseDataResult {
