@@ -1,8 +1,6 @@
 package id.ihwan.jetpackpro.data.source.remote.network.response
 
 import android.os.Parcelable
-import androidx.lifecycle.LiveData
-import androidx.paging.PagedList
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
@@ -23,6 +21,5 @@ data class ResultsData(
     val poster_path: String? = "",
     val backdrop_path: String? = "",
     val overview: String? = "",
-    val release_date: String? = "",
-    var isFavorite: Int? = 0
+    val release_date: String? = ""
 ): Parcelable

@@ -15,7 +15,7 @@ import id.ihwan.jetpackpro.utils.Injection
 import id.ihwan.jetpackpro.R
 import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
 import id.ihwan.jetpackpro.databinding.FragmentFavoriteMoviesBinding
-import id.ihwan.jetpackpro.home.movies.adapter.MoviesPagedListAdapter
+import id.ihwan.jetpackpro.adapter.MoviesPagedListAdapter
 import id.ihwan.jetpackpro.detail.DetailActivity
 
 class FavoriteMoviesFragment : Fragment() {
@@ -60,7 +60,8 @@ class FavoriteMoviesFragment : Fragment() {
 
     private fun goToDetailMovies(movies: ResultsData){
         val i = Intent(activity, DetailActivity::class.java)
-        i.putExtra("id", movies)
+        i.putExtra("liveDataMovies", movies)
+        i.putExtra("isFromFavorite", true)
         startActivity(i)
     }
 

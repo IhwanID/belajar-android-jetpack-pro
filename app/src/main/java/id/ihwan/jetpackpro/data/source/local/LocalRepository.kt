@@ -25,7 +25,7 @@ class LocalRepository(
 
     fun deleteFromFavorite(data: ResultsData){
         ioExecutor.execute {
-            favoriteDao.detele(data)
+            favoriteDao.delete(data)
         }
     }
 }

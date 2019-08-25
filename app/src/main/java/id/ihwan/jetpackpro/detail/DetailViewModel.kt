@@ -13,13 +13,12 @@ class DetailViewModel(private val repository: MovieRepository) : ViewModel() {
     val detail: LiveData<ResultsData>
         get() = _detail
 
+    fun addToFavorite(data: ResultsData){
+        repository.addToFavorite(data)
+    }
 
-//    fun addToFavorite(id: Int){
-//        repository.addToFavorite(id)
-//    }
-
-//    fun deteleFromFavorite(id: Int){
-//        repository.deleteFromFavorite(id)
-//    }
+    fun deleteFromFavorite(data: ResultsData){
+        repository.unfavorite(data)
+    }
 
 }

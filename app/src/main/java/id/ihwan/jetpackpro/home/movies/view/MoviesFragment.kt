@@ -16,7 +16,7 @@ import id.ihwan.jetpackpro.databinding.FragmentMoviesBinding
 import id.ihwan.jetpackpro.R
 import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
 import id.ihwan.jetpackpro.detail.DetailActivity
-import id.ihwan.jetpackpro.home.movies.adapter.MoviesPagedListAdapter
+import id.ihwan.jetpackpro.adapter.MoviesPagedListAdapter
 import id.ihwan.jetpackpro.utils.Injection
 
 class MoviesFragment : Fragment() {
@@ -53,29 +53,14 @@ class MoviesFragment : Fragment() {
             adapterList.submitList(it)
         })
 
-
-//        viewModel.status.observe(this, Observer {
-//            when(it){
-//                Status.LOADING -> {
-//                    binding.moviesRecyclerView.visibility = View.INVISIBLE
-//                    binding.progressBar.visibility = View.VISIBLE
-//                }
-//                Status.DONE -> {
-//                    binding.moviesRecyclerView.visibility = View.VISIBLE
-//                    binding.progressBar.visibility = View.INVISIBLE
-//                }
-//                else -> {
-//
-//                }
-//            }
-//        })
         return binding.root
 
     }
 
     private fun goToDetailMovies(movies: ResultsData){
         val i = Intent(activity, DetailActivity::class.java)
-        i.putExtra("id", movies)
+        i.putExtra("liveDataMovies", movies)
+        i.putExtra("isFromFavorite", false)
         startActivity(i)
     }
 

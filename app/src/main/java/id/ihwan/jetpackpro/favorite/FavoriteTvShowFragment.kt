@@ -12,11 +12,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
-import  id.ihwan.jetpackpro.detail.DetailActivity
+import id.ihwan.jetpackpro.detail.DetailActivity
 import id.ihwan.jetpackpro.R
 import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
 import id.ihwan.jetpackpro.databinding.FragmentFavoriteTvShowBinding
-import id.ihwan.jetpackpro.home.movies.adapter.MoviesPagedListAdapter
+import id.ihwan.jetpackpro.adapter.MoviesPagedListAdapter
 import id.ihwan.jetpackpro.utils.Injection
 
 class FavoriteTvShowFragment : Fragment() {
@@ -62,7 +62,8 @@ class FavoriteTvShowFragment : Fragment() {
 
     private fun goToDetailMovies(movies: ResultsData){
         val i = Intent(activity, DetailActivity::class.java)
-        i.putExtra("id", movies)
+        i.putExtra("liveDataMovies", movies)
+        i.putExtra("isFromFavorite", true)
         startActivity(i)
     }
 

@@ -23,7 +23,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/poster_the_umbrella"/>
+                tools:src="@drawable/poster_the_umbrella"
+                android:contentDescription="@string/image_poster" />
 
         <TextView
                 android:id="@+id/titleDetail"
@@ -58,7 +59,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="43dp"
-                android:text="Favorite"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

@@ -6,7 +6,7 @@ import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
 
 class MovieRepository(
     private val localRepository: LocalRepository
-): TMDBDataSource{
+) : TMDBDataSource {
 
     override fun getFavoriteMovies(): DataSource.Factory<Int, ResultsData> {
         return localRepository.getMoviesFavorite()
@@ -17,11 +17,11 @@ class MovieRepository(
     }
 
     override fun unfavorite(data: ResultsData) {
-       localRepository.deleteFromFavorite(data)
+        localRepository.deleteFromFavorite(data)
     }
 
     override fun addToFavorite(data: ResultsData) {
-       localRepository.addToFavorite(data)
+        localRepository.addToFavorite(data)
     }
 
 }

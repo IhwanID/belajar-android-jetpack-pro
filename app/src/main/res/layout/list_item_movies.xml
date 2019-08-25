@@ -32,7 +32,8 @@
                     android:layout_marginLeft="16dp"
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
-                    tools:src="@drawable/poster_aquaman"/>
+                    tools:src="@drawable/poster_aquaman"
+                    android:contentDescription="@string/image_poster" />
 
             <TextView
                     android:id="@+id/titleMovies"

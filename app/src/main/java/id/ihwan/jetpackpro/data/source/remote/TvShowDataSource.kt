@@ -8,7 +8,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class TvShowDataSource(private val service: TMDBApiService) : PageKeyedDataSource<Int, ResultsData>() {
+class TvShowDataSource(private val service: TMDBApiService) :
+    PageKeyedDataSource<Int, ResultsData>() {
 
     override fun loadInitial(
         params: LoadInitialParams<Int>,
@@ -48,7 +49,7 @@ class TvShowDataSource(private val service: TMDBApiService) : PageKeyedDataSourc
                 ) {
                     if (response.isSuccessful) {
                         val data = response.body()?.results ?: emptyList()
-                        callback.onResult(data, params.key+1)
+                        callback.onResult(data, params.key + 1)
                     } else {
 
                     }

@@ -32,15 +32,15 @@
                     android:layout_marginLeft="16dp"
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
-                    tools:src="@drawable/poster_aquaman"/>
+                    tools:src="@drawable/poster_aquaman"
+                    android:contentDescription="@string/image_poster" />
 
             <TextView
                     android:id="@+id/titleMovies"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="@{model.name}"
-                    tools:text="AQUAMAN"/>
+                    android:text="@{model.name}" />
         </LinearLayout>
 
 

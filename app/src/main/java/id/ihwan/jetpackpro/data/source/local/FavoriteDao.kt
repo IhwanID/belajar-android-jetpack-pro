@@ -24,16 +24,15 @@ interface FavoriteDao {
      * @param data the movie / tvShow to be deleted.
      */
     @Delete
-    fun detele(data: ResultsData)
+    fun delete(data: ResultsData)
 
     /**
-     * get data favorite movie / tvShow in the database as paging.
+     * get liveDataMovies favorite movie / tvShow in the database as paging.
      */
-
-    @Query("select * from favorite_table where name = :title and isFavorite = 1")
+    @Query("select * from favorite_table where name = :title")
     fun getAllFavoriteMovie(title: String): DataSource.Factory<Int, ResultsData>
 
-    @Query("select * from favorite_table where title = :title and isFavorite = 1")
+    @Query("select * from favorite_table where title = :title")
     fun getAllFavoriteTvShow(title: String): DataSource.Factory<Int, ResultsData>
 
 }

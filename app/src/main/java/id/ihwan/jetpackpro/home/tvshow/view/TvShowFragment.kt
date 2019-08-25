@@ -17,7 +17,7 @@ import id.ihwan.jetpackpro.databinding.FragmentTvShowBinding
 import id.ihwan.jetpackpro.home.HomeViewModel
 import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
 import id.ihwan.jetpackpro.detail.DetailActivity
-import id.ihwan.jetpackpro.home.movies.adapter.MoviesPagedListAdapter
+import id.ihwan.jetpackpro.adapter.MoviesPagedListAdapter
 import id.ihwan.jetpackpro.utils.Injection
 
 
@@ -62,7 +62,8 @@ class TvShowFragment : Fragment() {
 
     private fun goToDetailTvShow(tvShow: ResultsData){
         val i = Intent(activity, DetailActivity::class.java)
-        i.putExtra("id", tvShow)
+        i.putExtra("liveDataMovies", tvShow)
+        i.putExtra("isFromFavorite", false)
         startActivity(i)
     }
 }

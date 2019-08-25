@@ -5,7 +5,8 @@ import androidx.paging.DataSource
 import id.ihwan.jetpackpro.data.source.remote.network.TMDBApiService
 import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
 
-class TvShowDataSourceFactory(private val service: TMDBApiService) : DataSource.Factory<Int, ResultsData>() {
+class TvShowDataSourceFactory(private val service: TMDBApiService) :
+    DataSource.Factory<Int, ResultsData>() {
 
     val dataSourceLiveData = MutableLiveData<TvShowDataSource>()
 

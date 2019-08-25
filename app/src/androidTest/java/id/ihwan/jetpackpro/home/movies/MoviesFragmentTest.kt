@@ -36,6 +36,7 @@ class MoviesFragmentTest {
 
     @Test
     fun getData() {
+        //TODO : Add More action
         onView(ViewMatchers.withId(R.id.moviesRecyclerView)).check(matches(isDisplayed()))
     }
 }

@@ -4,7 +4,7 @@ import androidx.paging.DataSource
 import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
 
 
-interface TMDBDataSource{
+interface TMDBDataSource {
 
     fun getFavoriteMovies(): DataSource.Factory<Int, ResultsData>
 
