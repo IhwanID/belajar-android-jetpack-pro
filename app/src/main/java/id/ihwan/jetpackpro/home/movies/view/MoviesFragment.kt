@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -50,18 +49,11 @@ class MoviesFragment : Fragment() {
             setHasFixedSize(true)
         }
 
-        viewModel.dataMovies.observe(this, Observer<PagedList<ResultsData>> {
+        viewModel.movieList.observe(this, Observer<PagedList<ResultsData>> {
             adapterList.submitList(it)
         })
 
-        viewModel.networkErrors.observe(this, Observer<String> {
-            Toast.makeText(requireContext(), "\uD83D\uDE28 Wooops $it", Toast.LENGTH_LONG).show()
-        })
-//
-//        viewModel.movies.observe(this, Observer {
-//            moviesAdapter.loadData(it)
-//        })
-//
+
 //        viewModel.status.observe(this, Observer {
 //            when(it){
 //                Status.LOADING -> {

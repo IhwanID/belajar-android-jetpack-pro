@@ -11,15 +11,6 @@ class ResponseData (
     val results: List<ResultsData>? = emptyList()
 )
 
-data class ResponseDataResult(
-    val data: LiveData<PagedList<ResultsData>>,
-    val networkErrors: LiveData<String>
-)
-
-data class ResponseDataResultLocal(
-    val data: LiveData<PagedList<ResultsData>>
-)
-
 @Parcelize
 @Entity(tableName = "favorite_table")
 data class ResultsData(

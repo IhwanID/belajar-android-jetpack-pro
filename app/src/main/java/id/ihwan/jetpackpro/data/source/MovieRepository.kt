@@ -1,73 +1,27 @@
 package id.ihwan.jetpackpro.data.source
 
-import androidx.paging.LivePagedListBuilder
-import id.ihwan.jetpackpro.data.MovieBoundaryCallback
-import id.ihwan.jetpackpro.data.TvShowBoundaryCallback
-import id.ihwan.jetpackpro.data.source.local.LocalDataSource
-import id.ihwan.jetpackpro.data.source.remote.network.TMDBApiService
-import id.ihwan.jetpackpro.data.source.remote.network.response.ResponseDataResult
-import id.ihwan.jetpackpro.data.source.remote.network.response.ResponseDataResultLocal
+import androidx.paging.DataSource
+import id.ihwan.jetpackpro.data.source.local.LocalRepository
+import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
 
 class MovieRepository(
-    private val service: TMDBApiService,
-    private val cache: LocalDataSource
-) {
+    private val localRepository: LocalRepository
+): TMDBDataSource{
 
-    fun getDataMovies(): ResponseDataResult {
-
-        val dataSourceFactory = cache.getAllMoviesData()
-
-        val boundaryCallback = MovieBoundaryCallback(service, cache)
-        val networkErrors = boundaryCallback.networkErrors
-
-        val data = LivePagedListBuilder(dataSourceFactory, DATABASE_PAGE_SIZE)
-            .setBoundaryCallback(boundaryCallback)
-            .build()
-
-        return ResponseDataResult(data, networkErrors)
+    override fun getFavoriteMovies(): DataSource.Factory<Int, ResultsData> {
+        return localRepository.getMoviesFavorite()
     }
 
-    fun getDataTvShow(): ResponseDataResult {
-
-        val dataSourceFactory = cache.getAllTvShowData()
-
-        val boundaryCallback = TvShowBoundaryCallback(service, cache)
-        val networkErrors = boundaryCallback.networkErrors
-
-        val data = LivePagedListBuilder(dataSourceFactory, DATABASE_PAGE_SIZE)
-            .setBoundaryCallback(boundaryCallback)
-            .build()
-
-        return ResponseDataResult(data, networkErrors)
+    override fun getFavoriteTvShow(): DataSource.Factory<Int, ResultsData> {
+        return localRepository.getTvShowFavorite()
     }
 
-    fun getMoviesFromFavorite(): ResponseDataResultLocal{
-        val dataSource = cache.getMoviesFavorite()
-
-        val data = LivePagedListBuilder(dataSource, DATABASE_PAGE_SIZE)
-            .build()
-
-        return ResponseDataResultLocal(data = data)
+    override fun unfavorite(data: ResultsData) {
+       localRepository.deleteFromFavorite(data)
     }
 
-    fun getTvShowFromFavorite(): ResponseDataResultLocal{
-        val dataSource = cache.getTvShowFavorite()
-
-        val data = LivePagedListBuilder(dataSource, DATABASE_PAGE_SIZE)
-            .build()
-
-        return ResponseDataResultLocal(data = data)
+    override fun addToFavorite(data: ResultsData) {
+       localRepository.addToFavorite(data)
     }
 
-    fun addToFavorite(id: Int){
-        cache.addToFavorite(id)
-    }
-
-    fun deleteFromFavorite(id: Int){
-        cache.deleteFromFavorite(id)
-    }
-
-    companion object {
-        private const val DATABASE_PAGE_SIZE = 10
-    }
 }

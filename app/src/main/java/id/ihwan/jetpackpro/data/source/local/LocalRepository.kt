@@ -4,25 +4,10 @@ import androidx.paging.DataSource
 import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
 import java.util.concurrent.Executor
 
-class LocalDataSource(
+class LocalRepository(
     private val favoriteDao: FavoriteDao,
     private val ioExecutor: Executor
 ) {
-
-    fun insert(data: List<ResultsData>, insertFinished: () -> Unit) {
-        ioExecutor.execute {
-            favoriteDao.insert(data)
-            insertFinished()
-        }
-    }
-
-    fun getAllMoviesData(): DataSource.Factory<Int, ResultsData>{
-     return favoriteDao.getAllMovie("")
-    }
-
-    fun getAllTvShowData(): DataSource.Factory<Int, ResultsData>{
-        return favoriteDao.getAllTvShow("")
-    }
 
     fun getMoviesFavorite(): DataSource.Factory<Int, ResultsData>{
         return favoriteDao.getAllFavoriteMovie("")
@@ -32,15 +17,15 @@ class LocalDataSource(
         return favoriteDao.getAllFavoriteTvShow("")
     }
 
-    fun addToFavorite(id: Int){
+    fun addToFavorite(data: ResultsData){
         ioExecutor.execute {
-            favoriteDao.favoriteMovie(id)
+            favoriteDao.insert(data)
         }
     }
 
-    fun deleteFromFavorite(id: Int){
+    fun deleteFromFavorite(data: ResultsData){
         ioExecutor.execute {
-            favoriteDao.unFavoriteMovie(id)
+            favoriteDao.detele(data)
         }
     }
 }
