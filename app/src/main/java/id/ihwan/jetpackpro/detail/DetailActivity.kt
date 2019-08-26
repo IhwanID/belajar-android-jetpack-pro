@@ -2,6 +2,8 @@ package id.ihwan.jetpackpro.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -27,6 +29,8 @@ class DetailActivity : AppCompatActivity() {
 
         supportActionBar?.title = data.getRealName()
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         viewModel._detail.postValue(data)
         
         viewModel.detail.observe(this, Observer {
@@ -37,13 +41,28 @@ class DetailActivity : AppCompatActivity() {
             when(isFavorite){
                 true -> {
                     text = context.getString(R.string.unfavorite)
-                    setOnClickListener { viewModel.deleteFromFavorite(data) }
+                    setOnClickListener {
+                        viewModel.deleteFromFavorite(data)
+                        showToast("Deleted From Favorite!")
+                    }
                 }
                 false -> {
                     text = context.getString(R.string.add_to_favorite)
-                    setOnClickListener { viewModel.addToFavorite(data) }
+                    setOnClickListener {
+                        viewModel.addToFavorite(data)
+                        showToast("Added To Favorite!")
+                    }
                 }
             }
         }
+    }
+
+    private fun showToast(msg: String){
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        onBackPressed()
+        return true
     }
 }

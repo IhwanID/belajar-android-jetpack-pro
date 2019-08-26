@@ -16,7 +16,7 @@ class MovieRepository(
         return localRepository.getTvShowFavorite()
     }
 
-    override fun unfavorite(data: ResultsData) {
+    override fun unFavorite(data: ResultsData) {
         localRepository.deleteFromFavorite(data)
     }
 

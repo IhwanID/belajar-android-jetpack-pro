@@ -10,7 +10,7 @@ interface TMDBDataSource {
 
     fun getFavoriteTvShow(): DataSource.Factory<Int, ResultsData>
 
-    fun unfavorite(data: ResultsData)
+    fun unFavorite(data: ResultsData)
 
     fun addToFavorite(data: ResultsData)
 }

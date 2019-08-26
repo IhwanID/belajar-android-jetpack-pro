@@ -8,7 +8,7 @@ import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
 class TvShowDataSourceFactory(private val service: TMDBApiService) :
     DataSource.Factory<Int, ResultsData>() {
 
-    val dataSourceLiveData = MutableLiveData<TvShowDataSource>()
+    private val dataSourceLiveData = MutableLiveData<TvShowDataSource>()
 
     override fun create(): DataSource<Int, ResultsData> {
         val tvShowDataSource = TvShowDataSource(service)

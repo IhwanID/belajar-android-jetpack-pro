@@ -18,7 +18,7 @@ class DetailViewModel(private val repository: MovieRepository) : ViewModel() {
     }
 
     fun deleteFromFavorite(data: ResultsData){
-        repository.unfavorite(data)
+        repository.unFavorite(data)
     }
 
 }
