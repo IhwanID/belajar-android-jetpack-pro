@@ -17,6 +17,8 @@ class FavoriteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favorite)
 
+        supportActionBar?.title = "Favorite Movie"
+
         initViewPager()
     }
 

@@ -47,6 +47,11 @@ class TvShowFragment : Fragment() {
         viewModel = ViewModelProviders.of(this, Injection.provideViewModelFactory(requireContext()))
             .get(HomeViewModel::class.java)
 
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.tvShowRecyclerView.apply {
             adapter = adapterList
             layoutManager = LinearLayoutManager(activity)
@@ -56,8 +61,6 @@ class TvShowFragment : Fragment() {
         viewModel.tvShowList.observe(this, Observer<PagedList<ResultsData>> {
             adapterList.submitList(it)
         })
-
-        return binding.root
     }
 
     private fun goToDetailTvShow(tvShow: ResultsData){

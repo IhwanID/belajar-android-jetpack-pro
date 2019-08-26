@@ -25,6 +25,8 @@ class DetailActivity : AppCompatActivity() {
         val data = intent.getParcelableExtra<ResultsData>("liveDataMovies")
         val isFavorite = intent.getBooleanExtra("isFromFavorite", false)
 
+        supportActionBar?.title = data.getRealName()
+
         viewModel._detail.postValue(data)
         
         viewModel.detail.observe(this, Observer {

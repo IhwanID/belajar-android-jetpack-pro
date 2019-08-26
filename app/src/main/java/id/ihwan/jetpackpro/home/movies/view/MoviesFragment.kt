@@ -43,6 +43,13 @@ class MoviesFragment : Fragment() {
         viewModel = ViewModelProviders.of(this, Injection.provideViewModelFactory(requireContext()))
             .get(HomeViewModel::class.java)
 
+        return binding.root
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         binding.moviesRecyclerView.apply {
             adapter = adapterList
             layoutManager = LinearLayoutManager(activity)
@@ -52,8 +59,6 @@ class MoviesFragment : Fragment() {
         viewModel.movieList.observe(this, Observer<PagedList<ResultsData>> {
             adapterList.submitList(it)
         })
-
-        return binding.root
 
     }
 

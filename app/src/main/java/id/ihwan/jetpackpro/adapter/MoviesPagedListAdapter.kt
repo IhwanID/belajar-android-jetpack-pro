@@ -23,10 +23,8 @@ class MoviesPagedListAdapter(val onClick: (ResultsData) -> Unit): PagedListAdapt
                 bind(data)
                 itemView.setOnClickListener { onClick(data) }
             }
-
         }
     }
-
 
     companion object{
         private val DIFF_CALLBACK = object: DiffUtil.ItemCallback<ResultsData>(){

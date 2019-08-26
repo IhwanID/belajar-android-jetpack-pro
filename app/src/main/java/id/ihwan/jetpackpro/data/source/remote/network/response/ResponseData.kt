@@ -22,4 +22,13 @@ data class ResultsData(
     val backdrop_path: String? = "",
     val overview: String? = "",
     val release_date: String? = ""
-): Parcelable
+): Parcelable{
+
+    fun getRealName(): String?{
+        return if(title.isNullOrEmpty()){
+            name
+        }else{
+            title
+        }
+    }
+}

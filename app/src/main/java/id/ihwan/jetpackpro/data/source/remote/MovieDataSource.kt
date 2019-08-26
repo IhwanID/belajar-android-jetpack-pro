@@ -1,7 +1,6 @@
 package id.ihwan.jetpackpro.data.source.remote
 
 import androidx.paging.PageKeyedDataSource
-import androidx.test.espresso.IdlingResource
 import id.ihwan.jetpackpro.data.source.remote.network.TMDBApiService
 import id.ihwan.jetpackpro.data.source.remote.network.response.ResponseData
 import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
@@ -42,6 +41,7 @@ class MovieDataSource(private val service: TMDBApiService) :
     }
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, ResultsData>) {
+        EspressoIdlingResource.increment()
         service.getPopularMovies(page = params.key).enqueue(
             object : Callback<ResponseData> {
                 override fun onFailure(call: Call<ResponseData>?, t: Throwable) {
