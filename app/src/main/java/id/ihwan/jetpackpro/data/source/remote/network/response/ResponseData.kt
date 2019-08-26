@@ -31,4 +31,13 @@ data class ResultsData(
             title
         }
     }
+
+    fun getRating(): Float{
+        return if (!vote_average.isNullOrEmpty()){
+            vote_average.toFloat() / 2
+        }else{
+            0f
+        }
+
+    }
 }

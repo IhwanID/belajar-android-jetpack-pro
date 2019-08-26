@@ -17,21 +17,19 @@
             android:layout_margin="8dp"
             card_view:cardElevation="8dp"
             card_view:cardCornerRadius="12dp"
-            card_view:contentPadding="12dp"
             card_view:cardBackgroundColor="#FFFFFF">
 
-        <LinearLayout
+        <RelativeLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="180dp">
 
             <ImageView
                     android:id="@+id/imageMovies"
                     app:imageUrl="@{model.backdrop_path}"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
+                    android:scaleType="centerCrop"
                     tools:src="@drawable/poster_aquaman"
                     android:contentDescription="@string/image_poster" />
 
@@ -39,12 +37,21 @@
                     android:id="@+id/titleMovies"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentBottom="true"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:shadowColor="@android:color/black"
+                    android:shadowDx="-1"
+                    android:shadowDy="-1"
+                    android:shadowRadius="1"
                     android:fontFamily="@font/roboto"
                     android:text="@{model.getRealName()}"
                     tools:text="@string/aquaman" />
 
-        </LinearLayout>
+
+        </RelativeLayout>
 
 
     </androidx.cardview.widget.CardView>
