@@ -1,9 +1,11 @@
 package id.ihwan.jetpackpro.data.source.remote
 
 import androidx.paging.PageKeyedDataSource
+import androidx.test.espresso.IdlingResource
 import id.ihwan.jetpackpro.data.source.remote.network.TMDBApiService
 import id.ihwan.jetpackpro.data.source.remote.network.response.ResponseData
 import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
+import id.ihwan.jetpackpro.utils.EspressoIdlingResource
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -15,6 +17,7 @@ class MovieDataSource(private val service: TMDBApiService) :
         params: LoadInitialParams<Int>,
         callback: LoadInitialCallback<Int, ResultsData>
     ) {
+        EspressoIdlingResource.increment()
         service.getPopularMovies(page = 1).enqueue(
             object : Callback<ResponseData> {
                 override fun onFailure(call: Call<ResponseData>?, t: Throwable) {
@@ -25,9 +28,11 @@ class MovieDataSource(private val service: TMDBApiService) :
                     call: Call<ResponseData>?,
                     response: Response<ResponseData>
                 ) {
+                    EspressoIdlingResource.decrement()
                     if (response.isSuccessful) {
                         val data = response.body()?.results ?: emptyList()
                         callback.onResult(data, null, 2)
+
                     } else {
 
                     }
@@ -47,6 +52,7 @@ class MovieDataSource(private val service: TMDBApiService) :
                     call: Call<ResponseData>?,
                     response: Response<ResponseData>
                 ) {
+                    EspressoIdlingResource.decrement()
                     if (response.isSuccessful) {
                         val data = response.body()?.results ?: emptyList()
                         callback.onResult(data, params.key + 1)

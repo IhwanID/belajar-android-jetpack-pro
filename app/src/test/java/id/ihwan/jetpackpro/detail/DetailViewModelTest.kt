@@ -3,7 +3,6 @@ package id.ihwan.jetpackpro.detail
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import id.ihwan.jetpackpro.data.source.MovieRepository
 import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
-import id.ihwan.jetpackpro.home.HomeViewModel
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -33,7 +32,9 @@ class DetailViewModelTest{
         val data = ResultsData(
             1, "Iron Man"
         )
-        repository.addToFavorite(data)
+
+        viewModel?.addToFavorite(data)
+
     }
 
     @Test
@@ -41,7 +42,8 @@ class DetailViewModelTest{
         val data = ResultsData(
             1, "Iron Man"
         )
-        repository.unfavorite(data)
+        viewModel?.deleteFromFavorite(data)
+
     }
 
 }

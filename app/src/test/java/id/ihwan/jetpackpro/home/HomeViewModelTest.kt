@@ -33,7 +33,7 @@ class HomeViewModelTest {
 
     private val service = TMDBApiService.create()
 
-    val config = PagedList.Config.Builder()
+    private val config = PagedList.Config.Builder()
         .setPageSize(5)
         .setInitialLoadSizeHint(5 * 2)
         .setEnablePlaceholders(false)

@@ -1,8 +1,11 @@
 package id.ihwan.jetpackpro.home.tvshow
 
+import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import id.ihwan.jetpackpro.R
 import org.junit.After
@@ -36,7 +39,10 @@ class TvShowFragmentTest {
 
     @Test
     fun getData() {
-        //TODO : Add More action
         onView(withId(R.id.tvShowRecyclerView)).check(matches(isDisplayed()))
+        onView(withId(R.id.tvShowRecyclerView)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
+
+        onView(withId(R.id.favorite_button)).check(matches(isDisplayed()))
+        onView(withId(R.id.favorite_button)).perform(click())
     }
 }
