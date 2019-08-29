@@ -1,3 +1,3 @@
 package id.ihwan.jetpackpro.utils
 
-enum class Status { LOADING, DONE }
+enum class Status { SUCCESS, ERROR, LOADING }

@@ -31,7 +31,7 @@ class DetailActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        viewModel._detail.postValue(data)
+        viewModel.setData(data)
         
         viewModel.detail.observe(this, Observer {
             binding.model = it

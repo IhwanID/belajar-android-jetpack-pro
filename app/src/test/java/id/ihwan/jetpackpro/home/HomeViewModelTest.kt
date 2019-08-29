@@ -1,18 +1,15 @@
 package id.ihwan.jetpackpro.home
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.lifecycle.LiveData
-import androidx.paging.LivePagedListBuilder
+import androidx.lifecycle.MutableLiveData
 import androidx.paging.PagedList
 import id.ihwan.jetpackpro.data.source.MovieRepository
-import id.ihwan.jetpackpro.data.source.remote.MoviesDataSourceFactory
-import id.ihwan.jetpackpro.data.source.remote.TvShowDataSourceFactory
-import id.ihwan.jetpackpro.data.source.remote.network.TMDBApiService
 import id.ihwan.jetpackpro.data.source.remote.network.response.ResultsData
 import org.junit.*
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
-import org.mockito.Mockito.mock
+import org.mockito.Mockito.*
+import org.mockito.MockitoAnnotations
 
 
 @RunWith(JUnit4::class)
@@ -25,30 +22,9 @@ class HomeViewModelTest {
     private val repository = mock(MovieRepository::class.java)
     private var viewModel: HomeViewModel? = null
 
-    var movieList : LiveData<PagedList<ResultsData>>
-    var tvShowList : LiveData<PagedList<ResultsData>>
-
-    private val moviesDataSourceFactory: MoviesDataSourceFactory
-    private val tvShowDataSourceFactory: TvShowDataSourceFactory
-
-    private val service = TMDBApiService.create()
-
-    private val config = PagedList.Config.Builder()
-        .setPageSize(5)
-        .setInitialLoadSizeHint(5 * 2)
-        .setEnablePlaceholders(false)
-        .build()
-
-    init {
-        moviesDataSourceFactory = MoviesDataSourceFactory(service)
-        tvShowDataSourceFactory = TvShowDataSourceFactory(service)
-
-        movieList = LivePagedListBuilder(moviesDataSourceFactory, config).build()
-        tvShowList = LivePagedListBuilder(tvShowDataSourceFactory, config).build()
-    }
-
     @Before
     fun setUp() {
+        MockitoAnnotations.initMocks(this)
         viewModel = HomeViewModel(repository)
 
     }
@@ -60,8 +36,16 @@ class HomeViewModelTest {
 
     @Test
     fun getData() {
-        Assert.assertNotNull(movieList)
-        Assert.assertNotNull(tvShowList)
+        val dummyContent: MutableLiveData<PagedList<ResultsData>> = MutableLiveData()
+        val pagedList: PagedList<*> = mock(PagedList::class.java)
+        dummyContent.value = pagedList as PagedList<ResultsData>
+
+        `when`(repository.getAllMovies()).thenReturn(dummyContent)
+        verify(repository).getAllMovies()
+
+        `when`(repository.getAllTvShow()).thenReturn(dummyContent)
+        verify(repository).getAllTvShow()
+
     }
 
 }
